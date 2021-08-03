@@ -1,0 +1,3 @@
+class GenderalProvader {
+  String selectCategoryId = "";
+}
