@@ -7,6 +7,8 @@ import 'package:ecommerce_final_project/screens/splash_screen/Splashscreen.dart'
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//jlsfksxzdfjks
+//sadasd
 void main() {
   runApp(MyApp());
 }
