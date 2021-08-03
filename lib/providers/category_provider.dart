@@ -12,7 +12,7 @@ class CategoriesProvider with ChangeNotifier {
         'http://furniture.sketchandscript.com/api/shops/GetCategories'));
     var data = jsonDecode(res.body);
     for (var i in data) {
-      categories.add(cat.Category(i));
+      categories.add(cat.Category.fromJson(i));
     }
     isLoading = false;
     notifyListeners();
