@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "946954933623",
+    "project_id": "lets--go-app",
+    "storage_bucket": "lets--go-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946954933623:android:d7491d20bf20f00d0abd72",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce_final_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946954933623-qt2nv6713rrl1jv7sv3crcb8lb2n0183.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ecommerce_final_project",
+            "certificate_hash": "1c54ea3d89a093437dec9bcf9eee197aed781638"
+          }
+        },
+        {
+          "client_id": "946954933623-9gvp3rer3ufgrlsqe0iqbag8t6qeh6kn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA16d-WS67kexJFgScQYA9StuxAq48zmos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946954933623-9gvp3rer3ufgrlsqe0iqbag8t6qeh6kn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

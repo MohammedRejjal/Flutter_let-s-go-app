@@ -2,7 +2,6 @@ import 'package:ecommerce_final_project/L10n/I10n.dart';
 import 'package:ecommerce_final_project/providers/category_provider.dart';
 import 'package:ecommerce_final_project/providers/general_provider.dart';
 import 'package:ecommerce_final_project/routes.dart';
-import 'package:ecommerce_final_project/screens/explore/explore_screen.dart';
 import 'package:ecommerce_final_project/screens/splash_screen/Splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

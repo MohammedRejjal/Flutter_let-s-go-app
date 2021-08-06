@@ -1,8 +1,8 @@
 import 'package:ecommerce_final_project/screens/otp_screen/otp_screen.dart';
 import 'package:flutter/material.dart';
 
-class SingUpScreen extends StatelessWidget {
-  static const namedRoute = '/SingUpScreen';
+class validationNumberScreen extends StatelessWidget {
+  static const namedRoute = '/validationNumberScreen';
   TextEditingController mycontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {

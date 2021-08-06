@@ -1,7 +1,7 @@
 import 'package:ecommerce_final_project/models/onboarding_content.dart';
-import 'package:ecommerce_final_project/screens/onbording/onboarding_screen.dart';
+import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
 import 'package:ecommerce_final_project/screens/onbording/widgets/dot.dart';
-import 'package:ecommerce_final_project/screens/sign_up/sing_up_screen.dart';
+import 'package:ecommerce_final_project/screens/Application%20introduction/sing_up_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +48,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                         child: Column(
                           children: [
                             Image.asset(
-                              "${widget.content[index].imageURL}",
+                              "${widget.content[pageIndex].imageURL}",
                               fit: BoxFit.fill,
                               height:
                                   MediaQuery.of(context).size.height / (2.5),
@@ -65,11 +65,11 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                       flex: 5,
                       child: Column(
                         children: [
-                          Text("${widget.content[index].text}"),
+                          Text("${widget.content[pageIndex].text}"),
                           SizedBox(
                             height: 20,
                           ),
-                          Text("${widget.content[index].subText}"),
+                          Text("${widget.content[pageIndex].subText}"),
                         ],
                       ),
                     )
@@ -96,21 +96,47 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             pageIndex == widget.content.length - 1
-                ? Center(
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.green, fixedSize: Size(200, 50)),
-                        onPressed: () {
-                          Navigator.pushNamed(context, SingUpScreen.namedRoute);
-                        },
-                        child: Text('Lets Go')))
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.green, fixedSize: Size(100, 50)),
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, validationNumberScreen.namedRoute);
+                          },
+                          child: Center(
+                            child: Text('Sign Up'),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.green, fixedSize: Size(100, 50)),
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, LoginScreen.namedRoute);
+                          },
+                          child: Center(
+                            child: Text('Login'),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(
-                                context, SingUpScreen.namedRoute);
+                            setState(() {
+                              pageIndex = 3;
+                            });
                           },
                           child: Text('Skip')),
                       TextButton(
