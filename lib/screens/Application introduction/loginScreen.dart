@@ -1,5 +1,5 @@
 import 'package:ecommerce_final_project/constants.dart';
-import 'package:ecommerce_final_project/screens/Application%20introduction/sing_up_screen.dart';
+import 'package:ecommerce_final_project/screens/Application%20introduction/validationNumberScreen.dart';
 import 'package:ecommerce_final_project/screens/widgets/create_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,4 +1,3 @@
-import 'package:http/http.dart';
 
 class Items {
   String? shopId;
@@ -9,7 +8,7 @@ class Items {
   String? itemDetails;
   double? price;
   double? priceToAdd;
-  List<itemsOptions>? itemsOptions1 = [];
+  List<ItemsOptions>? itemsOptions1 = [];
   String? id;
   String? updatedOn;
   String? createdOn;
@@ -23,14 +22,15 @@ class Items {
     this.itemDetails = json['itemDetails'];
     this.price = json[price];
     this.priceToAdd = json[priceToAdd];
-    this.itemsOptions1 = json[itemsOptions];
+    this.itemsOptions1 = json[ItemsOptions];
     this.id = json['id'];
     this.updatedOn = json['updatedOn'];
     this.createdOn = json['createdOn'];
   }
 }
 
-class itemsOptions {
+// ignore: camel_case_types
+class ItemsOptions {
   int? id;
   String? typeName;
   int? type;
@@ -38,7 +38,7 @@ class itemsOptions {
   double? price;
   double? priceToAdd;
 
-  itemsOptions(Map<String, dynamic> json) {
+  ItemsOptions(Map<String, dynamic> json) {
     this.id = json[id];
     this.typeName = json['typeName'];
     this.type = json[type];

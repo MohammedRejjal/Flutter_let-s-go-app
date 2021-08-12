@@ -32,6 +32,13 @@ dependencies:
   http:
   provider:
   json_annotation:
+  scroll_bottom_navigation_bar: ^4.0.0
+  carousel_slider: ^4.0.0
+
+  #firebase
+  firebase_core: 
+  firebase_auth: 
+  fancy_bottom_navigation: ^0.3.3
 
 dev_dependencies:
   flutter_test:

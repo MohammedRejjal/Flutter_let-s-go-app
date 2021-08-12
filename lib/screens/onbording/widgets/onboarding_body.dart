@@ -1,7 +1,7 @@
 import 'package:ecommerce_final_project/models/onboarding_content.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
 import 'package:ecommerce_final_project/screens/onbording/widgets/dot.dart';
-import 'package:ecommerce_final_project/screens/Application%20introduction/sing_up_screen.dart';
+import 'package:ecommerce_final_project/screens/Application%20introduction/validationNumberScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: [ 
         PageView.builder(
           onPageChanged: (int y) {
             setState(() {
@@ -35,7 +35,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             return Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              child: SafeArea(
+              
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -75,7 +75,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                     )
                   ],
                 ),
-              ),
+             
             );
           },
         ),

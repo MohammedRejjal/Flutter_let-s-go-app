@@ -19,3 +19,7 @@ double getScreenHeight(double inHeight) {
 double getScreenWidth(double inWidth) {
   return SizeConfig.screenWidth * inWidth / 400;
 }
+
+double getScreenSize() {
+  return SizeConfig.screenHeight;
+}

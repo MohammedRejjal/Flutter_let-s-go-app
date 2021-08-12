@@ -1,9 +1,21 @@
 import 'package:ecommerce_final_project/screens/otp_screen/otp_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class validationNumberScreen extends StatelessWidget {
   static const namedRoute = '/validationNumberScreen';
   TextEditingController mycontroller = TextEditingController();
+
+  // Future<bool> validationNumber() async {
+  //   FirebaseAuth auth = FirebaseAuth.instance;
+  //   auth.verifyPhoneNumber(
+  //       phoneNumber: phoneNumber,
+  //       verificationCompleted: verificationCompleted,
+  //       verificationFailed: verificationFailed,
+  //       codeSent: codeSent,
+  //       codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+  // }
+
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
