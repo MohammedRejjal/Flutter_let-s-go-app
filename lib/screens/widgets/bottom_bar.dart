@@ -1,6 +1,8 @@
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
+import 'package:ecommerce_final_project/screens/widgets/FancyBottomNavigation.dart';
+import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+
 class BottonBar extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -13,6 +15,7 @@ class _MyHomePageState extends State<BottonBar> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig(context);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -22,37 +25,40 @@ class _MyHomePageState extends State<BottonBar> {
           ),
         ),
       ),
-      bottomNavigationBar: FancyBottomNavigation(
-        tabs: [
-          TabData(
-            iconData: Icons.home,
-            title: "Home",
-          ),
-          TabData(
-            iconData: Icons.favorite,
-            title: "favorite",
-          ),
-          TabData(
-            iconData: Icons.notifications_on,
-            title: "notifications",
-          ),
-          TabData(
-            iconData: Icons.bookmark_add,
-            title: "booking",
-          ),
-        ],
-        activeIconColor: Color.fromRGBO(207, 181, 59, 1),
-        barBackgroundColor: Color(0xff123456),
-        circleColor: Colors.white,
-        inactiveIconColor: Colors.white,
-        textColor: Color.fromRGBO(207, 181, 59, 1),
-        initialSelection: 0,
-        key: bottomNavigationKey,
-        onTabChangedListener: (position) {
-          setState(() {
-            currentPage = position;
-          });
-        },
+      bottomNavigationBar: SizedBox(
+
+        child: FancyBottomNavigation(
+          tabs: [
+            TabData(
+              iconData: Icons.home,
+              title: "Home",
+            ),
+            TabData(
+              iconData: Icons.favorite,
+              title: "favorite",
+            ),
+            TabData(
+              iconData: Icons.notifications_on,
+              title: "notifications",
+            ),
+            TabData(
+              iconData: Icons.bookmark_add,
+              title: "booking",
+            ),
+          ],
+          activeIconColor: Color.fromRGBO(207, 181, 59, 1),
+          barBackgroundColor: Color(0xff123456),
+          circleColor: Colors.white,
+          inactiveIconColor: Colors.white,
+          textColor: Color.fromRGBO(207, 181, 59, 1),
+          initialSelection: 0,
+          key: bottomNavigationKey,
+          onTabChangedListener: (position) {
+            setState(() {
+              currentPage = position;
+            });
+          },
+        ),
       ),
     );
   }
@@ -64,7 +70,7 @@ class _MyHomePageState extends State<BottonBar> {
   _getPage(int page) {
     switch (page) {
       case 0:
-        return HomeScreen ();
+        return HomeScreen();
       case 1:
         return Container(
           color: Colors.blue,

@@ -4,6 +4,8 @@ import 'package:ecommerce_final_project/providers/general_provider.dart';
 import 'package:ecommerce_final_project/routes.dart';
 import 'package:ecommerce_final_project/screens/home/categories_card.dart';
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
+import 'package:ecommerce_final_project/screens/splash_screen/Splashscreen.dart';
+import 'package:ecommerce_final_project/screens/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: CategoriesCard(),
+        home: BottonBar(),
       ),
     );
   }

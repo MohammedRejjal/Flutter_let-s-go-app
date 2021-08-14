@@ -1,3 +1,4 @@
+import 'package:ecommerce_final_project/constants.dart';
 import 'package:ecommerce_final_project/screens/home/category_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,33 +9,41 @@ class CategoriesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Container(
-        width: 320,
-        height: 210,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CategoryTile(category: 'as'),
-                CategoryTile(category: 'as'),
-                CategoryTile(category: 'as'),
-              ],
+    SizeConfig(context);
+    return Container(
+        height: getScreenHeight() / 2,
+        child: GridView.builder(
+            itemCount: 8,
+            scrollDirection: Axis.horizontal,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 1,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CategoryTile(category:'as'),
-                CategoryTile(category:'as'),
-                CategoryTile(category:'as'),
-                CategoryTile(category:'as'),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+            itemBuilder: (context, index) {
+              return CategoryTile(category: '$index');
+            }));
+    // Row(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: [
+    //     CategoryTile(category: 'as'),
+    //     CategoryTile(category: 'as'),
+    //   ],
+    // ),
+    // Row(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: [
+    //     CategoryTile(category: 'as'),
+    //     CategoryTile(category: 'as'),
+    //     CategoryTile(category: 'as'),
+    //   ],
+    // ),
+    // Row(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: [
+    //     CategoryTile(category: 'as'),
+    //     CategoryTile(category: 'as'),
+    //   ],
+    // ),
+    
   }
 }

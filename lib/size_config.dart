@@ -12,14 +12,14 @@ class SizeConfig {
   }
 }
 
-double getScreenHeight(double inHeight) {
-  return SizeConfig.screenHeight * inHeight / 1000;
+
+
+
+
+double getScreenHeight() {
+  return SizeConfig.screenHeight;
 }
 
-double getScreenWidth(double inWidth) {
-  return SizeConfig.screenWidth * inWidth / 400;
-}
-
-double getScreenSize() {
+double getScreenWidth() {
   return SizeConfig.screenHeight;
 }

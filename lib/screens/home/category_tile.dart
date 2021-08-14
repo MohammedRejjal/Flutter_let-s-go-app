@@ -1,25 +1,39 @@
+import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
 
 class CategoryTile extends StatelessWidget {
   const CategoryTile({Key? key, required this.category}) : super(key: key);
   final String category;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(5),
-      width: 70,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-Image.asset('assets/farm.jpg'),          SizedBox(
-            height: 5,
+    SizeConfig(context);
+
+    return Stack(children: [
+      Container(
+        height: getScreenHeight() / 5,
+        width: getScreenWidth()/3.9,
+        margin: EdgeInsets.all(10),
+        decoration: new BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          image: new DecorationImage(
+            image: new AssetImage('assets/farm.jpg'),
+            fit: BoxFit.fill,
           ),
-          Text(
-            category,
-            textAlign: TextAlign.center,
-          ),
-        ],
+        ),
       ),
-    );
+      Column(mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          
+          Container(        margin: EdgeInsets.all(10),
+padding: EdgeInsets.all(5),
+            
+            width: getScreenWidth()/3.5,
+child: Text(category ,style: TextStyle(color: Colors.white),), 
+         ),
+          SizedBox(height: 20,)
+        ],
+      )
+    ]);
   }
 }
