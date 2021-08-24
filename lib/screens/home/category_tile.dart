@@ -1,39 +1,55 @@
+import 'package:ecommerce_final_project/providers/main_category_provider.dart';
+import 'package:ecommerce_final_project/screens/home/sub_categories_screen.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CategoryTile extends StatelessWidget {
   const CategoryTile({Key? key, required this.category}) : super(key: key);
-  final String category;
+  final int category;
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig(context);
+    var watcher = context.watch<MainCategoryProvider>();
 
-    return Stack(children: [
-      Container(
-        height: getScreenHeight() / 5,
-        width: getScreenWidth()/3.9,
-        margin: EdgeInsets.all(10),
-        decoration: new BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          image: new DecorationImage(
-            image: new AssetImage('assets/farm.jpg'),
-            fit: BoxFit.fill,
+    SizeConfig(context);
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(SubCategoriesScreen.namedRoute,arguments: {'name' :watcher.Category_data[category].name});
+      },
+      child: Stack(children: [
+        Container(
+          height: getScreenHeight() / 5,
+          width: getScreenWidth() / 3.9,
+          margin: EdgeInsets.all(10),
+          decoration: new BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            image: new DecorationImage(
+              image: new NetworkImage("${watcher.Category_data[category].imageUrl}"),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
-      ),
-      Column(mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          
-          Container(        margin: EdgeInsets.all(10),
-padding: EdgeInsets.all(5),
-            
-            width: getScreenWidth()/3.5,
-child: Text(category ,style: TextStyle(color: Colors.white),), 
-         ),
-          SizedBox(height: 20,)
-        ],
-      )
-    ]);
+     
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              width: double.infinity,
+              color: Colors.black38,
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "${watcher.Category_data[category].name}",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            SizedBox(
+              height: getScreenHeight() / 80,
+            )
+          ],
+        )
+      ]),
+    );
   }
 }

@@ -34,8 +34,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   onTap: () {
                     context.read<GenderalProvader>().selectCategoryId = context
                         .read<CategoriesProvider>()
-                        .categories[index]
-                        .id!;
+                        .categories[index].name
+                        ;
                     Navigator.of(context).pushNamed(ShopsScreen.namedRoute);
                   },
                   title: Text("${watcher.categories[index].name}"),

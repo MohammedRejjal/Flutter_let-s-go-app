@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'category.dart';
+part of 'users.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -8,10 +8,10 @@ part of 'category.dart';
 
 Category _$CategoryFromJson(Map<String, dynamic> json) {
   return Category(
-    json['number'] as num?,
-    json['name'] as String?,
-    json['imgeURL'] as String?,
-    json['id'] as String?,
+    number: json['number'] as num,
+    name: json['name'] as String,
+    imgeURL: json['imgeURL'] as String,
+    id: json['id'] as String,
   );
 }
 
