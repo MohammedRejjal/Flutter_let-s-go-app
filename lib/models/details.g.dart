@@ -6,24 +6,35 @@ part of 'details.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Details _$DetailsFromJson(Map<String, dynamic> json) {
-  return Details(
-    specific_detailes: (json['specific_detailes'] as List<dynamic>)
-        .map((e) => SpecificDetailes.fromJson(e as Map<String, dynamic>))
-        .toList(),
+Detailes _$DetailesFromJson(Map<String, dynamic> json) {
+  return Detailes(
+    (json['price'] as Map<String, dynamic>?)?.map(
+      (k, e) => MapEntry(k, (e as num).toDouble()),
+    ),
+    (json['workhours'] as Map<String, dynamic>?)?.map(
+      (k, e) => MapEntry(k, e as String),
+    ),
+    id: json['id'] as String,
     name: json['name'] as String,
-    imagUrl: json['imagUrl'] as String,
-    price: json['price'] as int,
+    mainImagUrl: json['mainImagUrl'] as String,
     location: json['location'] as String,
-    faverate: json['faverate'] as bool,
+    latitude: (json['latitude'] as num).toDouble(),
+    longitude: (json['longitude'] as num).toDouble(),
+    infoDetails: json['infoDetails'] as String,
+    imagesUrl:
+        (json['imagesUrl'] as List<dynamic>).map((e) => e as String).toList(),
   );
 }
 
-Map<String, dynamic> _$DetailsToJson(Details instance) => <String, dynamic>{
+Map<String, dynamic> _$DetailesToJson(Detailes instance) => <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
-      'imagUrl': instance.imagUrl,
+      'mainImagUrl': instance.mainImagUrl,
       'price': instance.price,
       'location': instance.location,
-      'faverate': instance.faverate,
-      'specific_detailes': instance.specific_detailes,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'infoDetails': instance.infoDetails,
+      'imagesUrl': instance.imagesUrl,
+      'workhours': instance.workhours,
     };

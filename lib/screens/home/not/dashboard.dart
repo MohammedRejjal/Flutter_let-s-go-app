@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/screens/home/detailspage.dart';
+import 'package:ecommerce_final_project/screens/home/details/detailspage.dart';
 import 'package:flutter/material.dart';
 
 

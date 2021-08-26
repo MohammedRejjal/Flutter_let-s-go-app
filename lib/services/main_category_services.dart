@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:ecommerce_final_project/models/details.dart';
 import 'package:ecommerce_final_project/models/main_category.dart';
-import 'package:ecommerce_final_project/models/specific_details.dart';
+import 'package:ecommerce_final_project/models/details.dart';
 import 'package:ecommerce_final_project/models/sub_category.dart';
 import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/screens/onbording/onboarding_screen.dart';

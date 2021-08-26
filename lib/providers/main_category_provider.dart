@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:ecommerce_final_project/models/details.dart';
 import 'package:ecommerce_final_project/models/main_category.dart';
-import 'package:ecommerce_final_project/models/specific_details.dart';
+import 'package:ecommerce_final_project/models/details.dart';
 import 'package:ecommerce_final_project/models/sub_category.dart';
 import 'package:ecommerce_final_project/models/users.dart';
 import 'package:ecommerce_final_project/services/main_category_services.dart';
@@ -13,7 +13,7 @@ class MainCategoryProvider with ChangeNotifier {
   MainCategoryServices mainCategoryServices = MainCategoryServices();
   List Category_data = [];
 
-  Future getAllShop() async {
+  Future getAllCategory() async {
     Category_data = await mainCategoryServices.getData();
     notifyListeners();
   }

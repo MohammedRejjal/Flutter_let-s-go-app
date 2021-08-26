@@ -1,5 +1,4 @@
-import 'package:ecommerce_final_project/models/details.dart';
-import 'package:json_annotation/json_annotation.dart';
+ import 'package:json_annotation/json_annotation.dart';
 
 
 part 'sub_category.g.dart';

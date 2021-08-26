@@ -1,7 +1,7 @@
 import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
-import 'package:ecommerce_final_project/screens/home/latest%20experiences.dart';
-import 'package:ecommerce_final_project/screens/home/sub_categories_tiles.dart';
+import 'package:ecommerce_final_project/screens/home/see&do/latest%20experiences.dart';
+import 'package:ecommerce_final_project/screens/home/subCategories/sub_categories_tiles.dart';
 import 'package:ecommerce_final_project/screens/onbording/onboarding_screen.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +32,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
 
     return MaterialApp(
       home: Scaffold(
+        
         appBar: AppBar(
           title: Text(arguments['name']),
         ),
@@ -72,11 +73,11 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                 child: Column(
                   children: [
                     Text(
-                      'All' + ' ${watcher.subCategory_data[0].name}',
+                      'All' + ' ${arguments['name']}',
                       style:
                           TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
                     ),
-                    LatestExpereans(count: 4)
+                    LatestExpereans(count: 2)
                   ],
                 ),
               ),

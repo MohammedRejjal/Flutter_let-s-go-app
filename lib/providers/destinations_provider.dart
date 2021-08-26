@@ -6,13 +6,13 @@ class DestinationsProvider with ChangeNotifier {
   DestinationsServices destinationsServices = DestinationsServices();
     List<Destinations> destinations_data = [];
 
-  Future getAllShop() async {
+  Future getAllDestination() async {
     destinations_data = await destinationsServices.getData();
      notifyListeners();
 
   }
 
-  Future setAllShop() async {
+  Future setAllDestination() async {
     await destinationsServices.setDataSS();
     notifyListeners();
   }

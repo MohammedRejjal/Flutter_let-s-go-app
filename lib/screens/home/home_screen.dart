@@ -1,10 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_final_project/providers/destinations_provider.dart';
+import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/providers/general_provider.dart';
 import 'package:ecommerce_final_project/providers/slider_images_provider.dart';
-import 'package:ecommerce_final_project/screens/home/categories_card.dart';
-import 'package:ecommerce_final_project/screens/home/destinations.dart';
-import 'package:ecommerce_final_project/screens/home/latest%20experiences.dart';
+import 'package:ecommerce_final_project/screens/home/category/categories_card.dart';
+import 'package:ecommerce_final_project/screens/home/destinations/destinations.dart';
+import 'package:ecommerce_final_project/screens/home/see&do/latest%20experiences.dart';
 import 'package:ecommerce_final_project/screens/onbording/widgets/dot.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   CarouselController buttonCarouselController = CarouselController();
   @override
   void initState() {
- 
- context.read<DestinationsProvider>().getAllShop();
-    
+    context.read<DestinationsProvider>().getAllDestination();
+    context.read<DetailsProvidder>().getAllDetail();
     super.initState();
   }
 
@@ -137,7 +137,7 @@ want to change your mood?''',
                           'See & Do',
                           style: TextStyle(fontSize: 18, color: Colors.black45),
                         )),
-                        LatestExpereans(count: 4),
+                        LatestExpereans(count: context.read<DetailsProvidder>().Detailes_data.length),
                         Divider(
                           color: Colors.black54,
                         ),

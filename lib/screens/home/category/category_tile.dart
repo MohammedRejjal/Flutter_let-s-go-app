@@ -1,5 +1,5 @@
 import 'package:ecommerce_final_project/providers/main_category_provider.dart';
-import 'package:ecommerce_final_project/screens/home/sub_categories_screen.dart';
+import 'package:ecommerce_final_project/screens/home/subCategories/sub_categories_screen.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,5 +1,6 @@
 import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
+import 'package:ecommerce_final_project/screens/home/subSubCategories/sub_sub_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,11 +38,18 @@ class _SunCategoriesTilesState extends State<SunCategoriesTiles> {
             height: 9,
           ),
           Container(
-            child: Text(
-                widget.name),
+            child: Text(widget.name),
           ),
         ],
       ),
+      onTap: () {
+        //   Navigator.of(context).pushNamed(SubSubCategories.namedRoute);
+        print('name=${widget.name}');
+        print('id=${widget.id}');
+        Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+          return SubSubCategories( name:widget.name , );
+        }));
+      },
     );
   }
 }

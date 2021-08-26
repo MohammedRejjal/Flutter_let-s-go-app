@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/screens/home/dashboard.dart';
+import 'package:ecommerce_final_project/screens/home/not/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

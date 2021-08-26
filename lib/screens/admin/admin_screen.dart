@@ -79,12 +79,34 @@ class _ChipDemoState extends State<AdmainScreen> {
             //   children: companyPosition.toList(),
             // ),
             _buildChoiceChips(),
+            _buildChoiceChips1()
           ],
         ),
       ),
     );
   }
-
+  Widget _buildChoiceChips1() {
+    return Container(
+      height: MediaQuery.of(context).size.height/4,
+      child: ListView.builder(
+        itemCount: categoryChoices!.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ChoiceChip(
+            label: Text(categoryChoices![index]),
+            selected: _choiceIndex == index,
+            selectedColor: Colors.red,
+            onSelected: (bool selected) {
+              setState(() {
+                _choiceIndex = selected ? index : 0;
+              });
+            },
+            backgroundColor: Colors.green,
+            labelStyle: TextStyle(color: Colors.white),
+          );
+        },
+      ),
+    );
+  }
   Widget _buildChoiceChips() {
     return Container(
       color: Colors.black12,

@@ -9,7 +9,7 @@ class AppApi {
     Map<String, dynamic> jsonBody;
     try {
       var response = await http.get(Uri.parse(baseUrl + url));
-     // print(response.body);
+     print(response.body);
 
       if (response.statusCode == 200) {
         jsonBody = new Map<String, dynamic>.from(json.decode(response.body));

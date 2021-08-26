@@ -1,37 +1,38 @@
-import 'package:ecommerce_final_project/models/specific_details.dart';
-import 'package:ecommerce_final_project/models/users.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'details.g.dart';
 
 @JsonSerializable()
-class Details {
+class Detailes {
+  final String id;
   final String name;
-  final String imagUrl;
-  final int price;
+  final String mainImagUrl;
+    Map<String, double>? price;
   final String location;
-  final bool faverate;
- 
-  final List<SpecificDetailes> specific_detailes;
+  final double latitude;
+  final double longitude;
+  final String infoDetails;
+  final List<String> imagesUrl;
+    Map<String, String>? workhours;
 
-  Details(
-      {required this.specific_detailes,
-      required this.name,
-      required this.imagUrl,
-      required this.price,
-      required this.location,
-      required this.faverate,
-       });
+  Detailes(
+     this.price,
+     this.workhours,
+    {
+    required this.id,
+    required this.name,
+    required this.mainImagUrl,
+     
+    required this.location,
+    required this.latitude,
+    required this.longitude,
+    required this.infoDetails,
+    required this.imagesUrl,
+  
+  });
 
+  factory Detailes.fromJson(Map<String, dynamic> json) =>
+      _$DetailesFromJson(json);
 
-    
-factory Details.fromJson(Map<String, dynamic> json) =>
-
-      _$DetailsFromJson(json);
-
-
-
-  Map<String, dynamic> toJson() => _$DetailsToJson(this);  
+  Map<String, dynamic> toJson() => _$DetailesToJson(this);
 }
-
-

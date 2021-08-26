@@ -1,10 +1,10 @@
 import 'package:ecommerce_final_project/constants.dart';
 import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
-import 'package:ecommerce_final_project/screens/home/category_tile.dart';
+import 'package:ecommerce_final_project/screens/home/category/category_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../size_config.dart';
+import '../../../../size_config.dart';
 
 class CategoriesCard extends StatefulWidget {
   const CategoriesCard({Key? key}) : super(key: key);
@@ -18,8 +18,8 @@ class _CategoriesCardState extends State<CategoriesCard> {
   void initState() {
      
      
-    context.read<SubCategoryProvider>().getAllShop();
-    context.read<MainCategoryProvider>().getAllShop();
+    context.read<SubCategoryProvider>().getAllSubCategory();
+    context.read<MainCategoryProvider>().getAllCategory();
     super.initState();
   }
 
