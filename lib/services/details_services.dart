@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/models/details.dart';
+import 'package:ecommerce_final_project/models/details/details.dart';
 import 'package:ecommerce_final_project/services/lets_go_api.dart';
 
 class DetailsServices {

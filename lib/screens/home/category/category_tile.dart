@@ -10,6 +10,7 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     var watcher = context.watch<MainCategoryProvider>();
 
     SizeConfig(context);

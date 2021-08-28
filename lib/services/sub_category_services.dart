@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/models/sub_category.dart';
+import 'package:ecommerce_final_project/models/sub_category/sub_category.dart';
 import 'package:ecommerce_final_project/services/lets_go_api.dart';
 
 class SubCategoryServices {

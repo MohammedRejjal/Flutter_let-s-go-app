@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:ecommerce_final_project/models/details.dart';
-import 'package:ecommerce_final_project/models/main_category.dart';
-import 'package:ecommerce_final_project/models/details.dart';
-import 'package:ecommerce_final_project/models/sub_category.dart';
-import 'package:ecommerce_final_project/models/users.dart';
+import 'package:ecommerce_final_project/models/details/details.dart';
+import 'package:ecommerce_final_project/models/main_category/main_category.dart';
+import 'package:ecommerce_final_project/models/details/details.dart';
+import 'package:ecommerce_final_project/models/sub_category/sub_category.dart';
+import 'package:ecommerce_final_project/models/users/users.dart';
 import 'package:ecommerce_final_project/services/main_category_services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
@@ -12,9 +12,14 @@ import 'package:http/http.dart' as http;
 class MainCategoryProvider with ChangeNotifier {
   MainCategoryServices mainCategoryServices = MainCategoryServices();
   List Category_data = [];
+  bool stuts = true;
 
   Future getAllCategory() async {
+    stuts = true;
     Category_data = await mainCategoryServices.getData();
+    if (Category_data != null) {
+      stuts = false;
+    }
     notifyListeners();
   }
 }

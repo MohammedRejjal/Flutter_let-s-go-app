@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/models/onboarding_content.dart';
+import 'package:ecommerce_final_project/models/onboarding_content/onboarding_content.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
 import 'package:ecommerce_final_project/screens/onbording/widgets/dot.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/validationNumberScreen.dart';

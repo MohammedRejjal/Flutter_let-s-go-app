@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/models/sub_category.dart';
+import 'package:ecommerce_final_project/models/sub_category/sub_category.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 

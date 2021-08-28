@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/models/details.dart';
+import 'package:ecommerce_final_project/models/details/details.dart';
 import 'package:ecommerce_final_project/services/details_services.dart';
 import 'package:flutter/cupertino.dart';
 

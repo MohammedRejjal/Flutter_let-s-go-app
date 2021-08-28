@@ -27,7 +27,7 @@ class _CategoriesCardState extends State<CategoriesCard> {
   Widget build(BuildContext context) {
     var watcher = context.watch<MainCategoryProvider>();
     SizeConfig(context);
-    return Container(
+    return  Container(
         height: getScreenHeight() / 2.5,
         child: GridView.builder(
             itemCount: watcher.Category_data.length,

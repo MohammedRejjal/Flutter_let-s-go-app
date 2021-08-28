@@ -1,7 +1,7 @@
-import 'package:ecommerce_final_project/models/details.dart';
-import 'package:ecommerce_final_project/models/main_category.dart';
-import 'package:ecommerce_final_project/models/details.dart';
-import 'package:ecommerce_final_project/models/sub_category.dart';
+import 'package:ecommerce_final_project/models/details/details.dart';
+import 'package:ecommerce_final_project/models/main_category/main_category.dart';
+import 'package:ecommerce_final_project/models/details/details.dart';
+import 'package:ecommerce_final_project/models/sub_category/sub_category.dart';
 import 'package:flutter/cupertino.dart';
 
 MainCategory setmaincategorydata({

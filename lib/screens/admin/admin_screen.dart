@@ -45,7 +45,7 @@ class _ChipDemoState extends State<AdmainScreen> {
       "Archaeological sites",
       'tourism'
     ];
-    
+    String yyy = 'sports_soccer_sharp';
     IconCategoryChoices = [
       Icons.sports_soccer_sharp,
       Icons.landscape,
@@ -85,9 +85,10 @@ class _ChipDemoState extends State<AdmainScreen> {
       ),
     );
   }
+
   Widget _buildChoiceChips1() {
     return Container(
-      height: MediaQuery.of(context).size.height/4,
+      height: MediaQuery.of(context).size.height / 4,
       child: ListView.builder(
         itemCount: categoryChoices!.length,
         itemBuilder: (BuildContext context, int index) {
@@ -107,6 +108,7 @@ class _ChipDemoState extends State<AdmainScreen> {
       ),
     );
   }
+
   Widget _buildChoiceChips() {
     return Container(
       color: Colors.black12,

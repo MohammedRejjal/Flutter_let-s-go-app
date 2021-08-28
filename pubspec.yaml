@@ -34,6 +34,16 @@ dependencies:
   json_annotation:
   scroll_bottom_navigation_bar: ^4.0.0
   carousel_slider: ^4.0.0
+  google_maps_flutter: ^2.0.6
+  location: ^4.2.0
+  flutter_polyline_points: ^1.0.0
+  geocoding: ^2.0.0
+  maps_toolkit: ^2.0.0
+
+
+
+
+
 
   #firebase
   firebase_core: 

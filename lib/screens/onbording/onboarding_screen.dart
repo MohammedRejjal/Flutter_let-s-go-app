@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/models/onboarding_content.dart';
+import 'package:ecommerce_final_project/models/onboarding_content/onboarding_content.dart';
 import 'package:ecommerce_final_project/screens/onbording/widgets/onboarding_body.dart';
 import 'package:flutter/material.dart';
 

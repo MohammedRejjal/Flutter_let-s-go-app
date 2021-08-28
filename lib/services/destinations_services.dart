@@ -1,4 +1,4 @@
-import 'package:ecommerce_final_project/models/destinations.dart';
+import 'package:ecommerce_final_project/models/destinations/destinations.dart';
  import 'package:ecommerce_final_project/services/lets_go_api.dart';
 
 class DestinationsServices {

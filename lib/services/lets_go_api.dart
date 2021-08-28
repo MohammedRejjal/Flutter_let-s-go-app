@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:ecommerce_final_project/models/main_category.dart';
+import 'package:ecommerce_final_project/models/main_category/main_category.dart';
 import 'package:http/http.dart' as http;
 
 class AppApi {
