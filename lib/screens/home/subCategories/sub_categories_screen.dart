@@ -81,7 +81,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                     ),
                     LatestExpereans(count:
                      context.read<DetailsProvidder>().detailesData.where((element) =>
-                            element.category ==  arguments['name']).length)
+                            element.category ==  arguments['name']).length ,axis: true,)
                   ]
                 ),
               ),

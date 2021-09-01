@@ -78,13 +78,27 @@ class _DestinationsState extends State<Destinations> {
             ),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-                return LatestExpereans(
-                    count: watcher
-                        .where((element) =>
-                            element.location ==
-                           context.read<DestinationsProvider>()
-                                    .destinationsData[index].name)
-                        .length);
+                return SafeArea(
+                  child: Scaffold(
+                    appBar: AppBar(
+                      title: Text("${ context.read<DestinationsProvider>()
+                                        .destinationsData[index].name}"),
+                    ),
+                    body: Container(
+                      height: double.infinity,
+                      width: getScreenWidth()/2,
+                      child: LatestExpereans(axis: false,
+                          count: watcher
+                              .where((element) =>
+                                  element.location ==
+                                  context
+                                      .read<DestinationsProvider>()
+                                      .destinationsData[index]
+                                      .name)
+                              .length),
+                    ),
+                  ),
+                );
               }));
             },
           );

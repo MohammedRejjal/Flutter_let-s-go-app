@@ -1,9 +1,11 @@
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
 import 'package:ecommerce_final_project/screens/widgets/FancyBottomNavigation.dart';
 import 'package:ecommerce_final_project/size_config.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 class BottonBar extends StatefulWidget {
+    static const namedRoute = '/BottonBar';
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -17,17 +19,15 @@ class _MyHomePageState extends State<BottonBar> {
   Widget build(BuildContext context) {
     SizeConfig(context);
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(color: Colors.white),
-          child: Center(
-            child: _getPage(currentPage),
-          ),
+      body: Container(
+        decoration: BoxDecoration(color: Colors.white),
+        child: Center(
+          child: _getPage(currentPage),
         ),
       ),
       bottomNavigationBar: SizedBox(
 
-        child: FancyBottomNavigation(
+        child:  FancyBottomNavigation(
           tabs: [
             TabData(
               iconData: Icons.home,
@@ -76,9 +76,13 @@ class _MyHomePageState extends State<BottonBar> {
           color: Colors.blue,
         );
       case 2:
-        return HomeScreen();
+      return Container(
+          color: Colors.blueAccent,
+        );
       default:
-        return HomeScreen();
+      return Container(
+          color: Colors.blueGrey,
+        );
     }
   }
 }

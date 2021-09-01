@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           'See & Do',
                           style: TextStyle(fontSize: 18, color: Colors.black45),
                         )),
-                        LatestExpereans(
+                        LatestExpereans(axis: true,
                             count: context
                                 .read<DetailsProvidder>()
                                 .detailesData

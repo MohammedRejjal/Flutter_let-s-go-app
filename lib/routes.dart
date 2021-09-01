@@ -7,12 +7,14 @@ import 'package:ecommerce_final_project/screens/otp_screen/otp_screen.dart';
 import 'package:ecommerce_final_project/screens/shop/shop_screen.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/validationNumberScreen.dart';
 import 'package:ecommerce_final_project/screens/subcategory_screen/subcategory_screen.dart';
+import 'package:ecommerce_final_project/screens/widgets/bottom_bar.dart';
 import 'package:flutter/widgets.dart';
 
 final Map<String, WidgetBuilder> routes = { 
     HomeScreen.namedRoute: (ctx) => HomeScreen(),
           SignUpScreen.namedRoute: (ctx) => SignUpScreen(),
 
+   BottonBar.namedRoute: (ctx) => BottonBar(),
 
    validationNumberScreen.namedRoute: (ctx) => validationNumberScreen(),
   OtpScreen.namedRoute: (ctx) => OtpScreen('2'),

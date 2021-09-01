@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LatestExpereans extends StatefulWidget {
+  final bool axis;
   final int count;
-  const LatestExpereans({Key? key, required this.count, required})
+  const LatestExpereans({Key? key, required this.count, required this.axis})
       : super(key: key);
 
   @override
@@ -18,30 +19,18 @@ class LatestExpereans extends StatefulWidget {
 class _LatestExpereansState extends State<LatestExpereans> {
   @override
   Widget build(BuildContext context) {
-    var watcher = context.watch<DetailsProvidder>().detailesData;
 
-    var icon = Icon(Icons.favorite);
     return Container(
       height: getScreenHeight() / 3,
       child: ListView.builder(
-        scrollDirection: Axis.horizontal,
+        scrollDirection:widget.axis? Axis.horizontal:Axis.vertical,
         itemCount: widget.count,
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            child: BuildCard(
-              context.read<DetailsProvidder>().detailesData[index].mainImagUrl,
-              context.read<DetailsProvidder>().detailesData[index].name,
-              context.read<DetailsProvidder>().detailesData[index].infoDetails,
-              context,
-            ),
-             onTap:( ) {
-          Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-            return DetailsScreen(watcher.where((element) => element.name == watcher.elementAt(index).name) );
-          }));
-          print(watcher.length);
-        },
-    );
-           
+          return BuildCard(index: index,image: 
+            context.read<DetailsProvidder>().detailesData[index].mainImagUrl,
+          textName:   context.read<DetailsProvidder>().detailesData[index].name,
+          textDetails:     context.read<DetailsProvidder>().detailesData[index].infoDetails,
+           );
         },
       ),
     );

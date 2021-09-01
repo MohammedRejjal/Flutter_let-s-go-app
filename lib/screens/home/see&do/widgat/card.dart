@@ -1,104 +1,119 @@
- 
 import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/screens/home/details/details_screen.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
- 
-Card BuildCard (
-  var image,
-  var textName,
-  var textDetails,
-  BuildContext context
-) {
-  var icon = Icon(Icons.favorite);
 
-  return   Card(
-      margin: EdgeInsets.all(10),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      child: Container(
-        height: getScreenHeight()/2,
-         padding: EdgeInsets.all(2),
-        width: getScreenWidth() / 5.5,
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage('${image}'),
+class BuildCard extends StatefulWidget {
+  const BuildCard(
+      {Key? key, this.image, this.textDetails, this.textName, this.index})
+      : super(key: key);
+  final image;
+  final index;
+  final textName;
+  final textDetails;
+  @override
+  _BuildCardState createState() => _BuildCardState();
+}
+
+class _BuildCardState extends State<BuildCard> {    bool favorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    var watcher = context.watch<DetailsProvidder>().detailesData;
+
+    {
+      return GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+            return DetailsScreen(watcher.where(
+                (element) => element.name == watcher.elementAt(widget. index).name));
+          }));
+          print(watcher.length);
+        },
+        child: Card(
+          margin: EdgeInsets.all(10),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          child: Container(
+            height: getScreenHeight() / 2,
+            padding: EdgeInsets.all(2),
+            width: getScreenWidth() / 5.5,
+            child: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage('${widget.image}'),
+                      ),
+                    ),
                   ),
+                  flex: 5,
                 ),
-              ),
-              flex: 5,
-            ),
-            Expanded(
-              child: Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 4,
+                Expanded(
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            '${widget.textName}',
+                            style: TextStyle(
+                                fontSize: getScreenWidth() / 48,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blueGrey),
+                          ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            '''${widget.textDetails}''',
+                            style: TextStyle(
+                                fontSize: getScreenWidth() / 60,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
                       ),
-                      Text(
-                        '${textName}',
-                        style: TextStyle(
-                            fontSize: getScreenWidth() / 48,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blueGrey),
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        '''${textDetails}''',
-                        style: TextStyle(
-                            fontSize: getScreenWidth() / 60,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      )
-                    ],
+                    ),
                   ),
+                  flex: 5,
                 ),
-              ),
-              flex: 5,
+                Expanded(
+                  child: Container(
+                    child: Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                favorite = !favorite;
+                              });
+                            },
+                            icon: Icon(
+                              favorite ? Icons.favorite : Icons.favorite_border,
+                            )),
+                        Spacer(),
+                      ],
+                    ),
+                  ),
+                  flex: 2,
+                )
+              ],
             ),
-            Expanded(
-              child: Container(
-                child: Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          if (icon == Icon(Icons.favorite))
-                            
-                              icon = Icon(Icons.favorite_border);
-                            
-                          else {
-                         
-                              icon = Icon(Icons.favorite);
-                           
-                          }
-                        },
-                        icon: icon),
-                    Spacer(),
-                    //rate
-                  ],
-                ),
-              ),
-              flex: 2,
-            )
-          ],
+          ),
         ),
-      ),
-   
-   
-  );
+      );
+    }
+  }
 }

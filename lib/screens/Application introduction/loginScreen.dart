@@ -3,6 +3,7 @@ import 'package:ecommerce_final_project/providers/auth_provider.dart';
 import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/SignUp.dart';
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
+import 'package:ecommerce_final_project/screens/widgets/bottom_bar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -353,7 +354,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             .user!
                                             .userId);
                                     Navigator.of(context).pushNamed(
-                                      HomeScreen.namedRoute,
+                                      BottonBar.namedRoute,
                                     );
                                   
                                 } else {
@@ -368,9 +369,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                               }),
                         )),
-                    _buildSignInWithText(),
-                    _buildSocialBtnRow(context),
                     _buildSignupBtn(context),
+                    _buildSocialBtnRow(context),
                   ],
                 ),
               ),

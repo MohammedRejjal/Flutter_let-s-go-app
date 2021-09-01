@@ -33,8 +33,8 @@ class _SubSubCategoriesState extends State<SubSubCategories> {
                     crossAxisSpacing: 1,
                     childAspectRatio: .76),
                 itemBuilder: (context, index) {
-                  return BuildCard(watcher .where((element) => element.id == widget.name).first.mainImagUrl,
-                      watcher.where((element) => element.id == widget.name).first.name, watcher.where((element) =>element.id == widget.name ).elementAt(index).infoDetails ,context);
+                  return  BuildCard(image: watcher .where((element) => element.id == widget.name).first.mainImagUrl,
+                     textName:  watcher.where((element) => element.id == widget.name).first.name,textDetails:  watcher.where((element) =>element.id == widget.name ).elementAt(index).infoDetails );
                 })),
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (ctx) {
