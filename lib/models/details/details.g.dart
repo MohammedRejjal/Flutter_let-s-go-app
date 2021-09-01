@@ -8,6 +8,7 @@ part of 'details.dart';
 
 Detailes _$DetailesFromJson(Map<String, dynamic> json) {
   return Detailes(
+    json['category'] as String,
     (json['price'] as Map<String, dynamic>?)?.map(
       (k, e) => MapEntry(k, (e as num).toDouble()),
     ),
@@ -27,6 +28,7 @@ Detailes _$DetailesFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$DetailesToJson(Detailes instance) => <String, dynamic>{
+      'category': instance.category,
       'id': instance.id,
       'name': instance.name,
       'mainImagUrl': instance.mainImagUrl,

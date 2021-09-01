@@ -1,8 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_final_project/models/users/users.dart';
+import 'package:ecommerce_final_project/providers/auth_provider.dart';
 import 'package:ecommerce_final_project/providers/destinations_provider.dart';
 import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/providers/general_provider.dart';
 import 'package:ecommerce_final_project/providers/slider_images_provider.dart';
+import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
+import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/screens/home/category/categories_card.dart';
 import 'package:ecommerce_final_project/screens/home/destinations/destinations.dart';
 import 'package:ecommerce_final_project/screens/home/see&do/latest%20experiences.dart';
@@ -13,6 +17,7 @@ import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+  static const namedRoute = '/HomeScreen';
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -27,11 +32,16 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     context.read<DestinationsProvider>().getAllDestination();
     context.read<DetailsProvidder>().getAllDetail();
+    context
+        .read<Userprovider>()
+        .getUser(context.read<Userprovider>().user!.userId);
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+  
     List imageList = context.read<SliderImageProvider>().imageList;
 
     var listOfDot = [];
@@ -74,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Text(
                                   '''Do you want to take a trip and
-want to change your mood?''',
+      want to change your mood?''',
                                   style: TextStyle(
                                       fontSize: getScreenWidth() / 35,
                                       color: Colors.amber[100]),
@@ -97,7 +107,12 @@ want to change your mood?''',
                           ),
                           items: imageList.map((e) {
                             return GestureDetector(
-                              onTap: () {},
+                              onTap: () async {
+                                print('userUrlccccccccc =' +
+                                    "${context.read<Userprovider>().userData!.name}");
+
+                                    context.read<Userprovider>().addHistoty(url: context.read<Userprovider>().user!.userId, history:{"2":"asda"});
+                              },
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8),
                                 child: Stack(
@@ -137,7 +152,11 @@ want to change your mood?''',
                           'See & Do',
                           style: TextStyle(fontSize: 18, color: Colors.black45),
                         )),
-                        LatestExpereans(count: context.read<DetailsProvidder>().Detailes_data.length),
+                        LatestExpereans(
+                            count: context
+                                .read<DetailsProvidder>()
+                                .detailesData
+                                .length),
                         Divider(
                           color: Colors.black54,
                         ),

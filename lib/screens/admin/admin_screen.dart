@@ -7,13 +7,13 @@ class AdmainScreen extends StatefulWidget {
 
 class _ChipDemoState extends State<AdmainScreen> {
   GlobalKey<ScaffoldState>? _key;
-  bool? _isSelected;
+  bool? isSelected;
   //List<CompanyWidget>? _companies;
   List<String>? _filters;
   List<String>? categoryChoices;
   List<String>? subCategoryChoices;
 
-  List<IconData>? IconCategoryChoices;
+  List<IconData>? iconCategoryChoices;
   String? url;
   int? _choiceIndex;
 
@@ -21,7 +21,7 @@ class _ChipDemoState extends State<AdmainScreen> {
   void initState() {
     super.initState();
     _key = GlobalKey<ScaffoldState>();
-    _isSelected = false;
+    isSelected = false;
     _choiceIndex = 0;
     _filters = <String>[];
     // _companies = <CompanyWidget>[
@@ -45,8 +45,8 @@ class _ChipDemoState extends State<AdmainScreen> {
       "Archaeological sites",
       'tourism'
     ];
-    String yyy = 'sports_soccer_sharp';
-    IconCategoryChoices = [
+   // String yyy = 'sports_soccer_sharp';
+    iconCategoryChoices = [
       Icons.sports_soccer_sharp,
       Icons.landscape,
       Icons.sports_kabaddi,
@@ -126,7 +126,7 @@ class _ChipDemoState extends State<AdmainScreen> {
                 avatar: CircleAvatar(
                   backgroundColor: Colors.blueGrey[400],
                   child: Icon(
-                    IconCategoryChoices![index],
+                    iconCategoryChoices![index],
                     color: Colors.white,
                     size: 20,
                   ),
@@ -170,7 +170,7 @@ class _ChipDemoState extends State<AdmainScreen> {
                 avatar: CircleAvatar(
                   backgroundColor: Colors.blueGrey[400],
                   child: Icon(
-                    IconCategoryChoices![index],
+                    iconCategoryChoices![index],
                     color: Colors.white,
                     size: 20,
                   ),

@@ -1,5 +1,6 @@
 import 'package:ecommerce_final_project/models/details/details.dart';
 import 'package:ecommerce_final_project/services/lets_go_api.dart';
+import 'package:flutter/foundation.dart';
 
 class DetailsServices {
   AppApi restApi = AppApi();
@@ -12,6 +13,7 @@ class DetailsServices {
       Map<String, dynamic> myMap = Map<String, dynamic>.from(res);
 
       myMap.forEach((key, value) {
+         
         detailsList.add(Detailes.fromJson(value));
       });
 
@@ -27,7 +29,10 @@ class DetailsServices {
       appApi.post(
           'details.json',
           setDetailes(
-            {},{},
+         
+            {},
+            {}, 
+             category: 'tourism',
             id: "general-tourism",
             name: 'Nebu mountain',
             mainImagUrl:
@@ -55,7 +60,6 @@ class DetailsServices {
               'https://tashatgo.com/wp-content/uploads/2021/07/img_1417795335_812.jpg',
               'https://tashatgo.com/wp-content/uploads/2021/07/%D8%AA%D9%86%D8%B2%D9%8A%D9%84-3.jpg',
             ],
-           
           ));
     } catch (EX) {
       throw EX;
@@ -63,26 +67,30 @@ class DetailsServices {
   }
 }
 
-Detailes setDetailes(Map<String, double> price,Map<String, String>  workhours,
-    {required String id,
-    required String name,
-    required String mainImagUrl,
-    required String location,
-    required double latitude,
-    required double longitude,
-    required String infoDetails,
-    required List<String> imagesUrl,
-      }) {
-  return Detailes(    
-        price,  workhours,
-
-      id: id,
-      name: name,
-      mainImagUrl: mainImagUrl,
-      location: location,
-      latitude: latitude,
-      longitude: longitude,
-      infoDetails: infoDetails,
-      imagesUrl: imagesUrl,
-      );
+Detailes setDetailes(
+  Map<String, double> price,
+  Map<String, String> workhours, {
+    required String category,
+  required String id,
+  required String name,
+  required String mainImagUrl,
+  required String location,
+  required double latitude,
+  required double longitude,
+  required String infoDetails,
+  required List<String> imagesUrl,
+}) {
+  return Detailes(
+    category,
+    price,
+    workhours,
+    id: id,
+    name: name,
+    mainImagUrl: mainImagUrl,
+    location: location,
+    latitude: latitude,
+    longitude: longitude,
+    infoDetails: infoDetails,
+    imagesUrl: imagesUrl,
+  );
 }

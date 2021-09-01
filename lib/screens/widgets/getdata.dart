@@ -1,18 +1,15 @@
-import 'package:ecommerce_final_project/models/details/details.dart';
-import 'package:ecommerce_final_project/models/main_category/main_category.dart';
-import 'package:ecommerce_final_project/models/details/details.dart';
-import 'package:ecommerce_final_project/models/sub_category/sub_category.dart';
-import 'package:flutter/cupertino.dart';
-
+ import 'package:ecommerce_final_project/models/main_category/main_category.dart';
+ import 'package:ecommerce_final_project/models/sub_category/sub_category.dart';
+ 
 MainCategory setmaincategorydata({
-  required String maincategory_name,
-  required String maincategory_imageUrl,
-  required String maincategory_icon ,
+  required String maincategoryName,
+  required String maincategoryImageUrl,
+  required String maincategoryIcon ,
 }) {
   var maincategory = MainCategory(
-    icon:maincategory_icon ,
-    name: maincategory_name,
-    imageUrl: maincategory_imageUrl,
+    icon:maincategoryIcon ,
+    name: maincategoryName,
+    imageUrl: maincategoryImageUrl,
   );
 
   return maincategory;

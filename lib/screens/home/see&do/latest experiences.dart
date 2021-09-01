@@ -1,4 +1,5 @@
 import 'package:ecommerce_final_project/providers/details_providder.dart';
+import 'package:ecommerce_final_project/screens/home/details/details_screen.dart';
 import 'package:ecommerce_final_project/screens/home/see&do/widgat/card.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,6 +18,8 @@ class LatestExpereans extends StatefulWidget {
 class _LatestExpereansState extends State<LatestExpereans> {
   @override
   Widget build(BuildContext context) {
+    var watcher = context.watch<DetailsProvidder>().detailesData;
+
     var icon = Icon(Icons.favorite);
     return Container(
       height: getScreenHeight() / 3,
@@ -24,13 +27,21 @@ class _LatestExpereansState extends State<LatestExpereans> {
         scrollDirection: Axis.horizontal,
         itemCount: widget.count,
         itemBuilder: (BuildContext context, int index) {
-          return BuildCard(
-              context.read<DetailsProvidder>().Detailes_data[index].mainImagUrl,
-              context.read<DetailsProvidder>().Detailes_data[index].location,
-              context
-                  .read<DetailsProvidder>()
-                  .Detailes_data[index]
-                  .infoDetails);
+          return GestureDetector(
+            child: BuildCard(
+              context.read<DetailsProvidder>().detailesData[index].mainImagUrl,
+              context.read<DetailsProvidder>().detailesData[index].name,
+              context.read<DetailsProvidder>().detailesData[index].infoDetails,
+              context,
+            ),
+             onTap:( ) {
+          Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+            return DetailsScreen(watcher.where((element) => element.name == watcher.elementAt(index).name) );
+          }));
+          print(watcher.length);
+        },
+    );
+           
         },
       ),
     );

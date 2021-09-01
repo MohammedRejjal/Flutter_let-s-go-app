@@ -1,5 +1,4 @@
-import 'package:ecommerce_final_project/providers/general_provider.dart';
-import 'package:ecommerce_final_project/providers/shops_provider.dart';
+ import 'package:ecommerce_final_project/providers/shops_provider.dart';
 import 'package:ecommerce_final_project/screens/shop/widgets/body.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

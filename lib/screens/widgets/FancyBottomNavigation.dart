@@ -23,7 +23,9 @@ class FancyBottomNavigation extends StatefulWidget {
       this.inactiveIconColor,
       this.textColor,
       this.barBackgroundColor})
+      // ignore: unnecessary_null_comparison
       : assert(onTabChangedListener != null),
+        // ignore: unnecessary_null_comparison
         assert(tabs != null),
         assert(tabs.length > 1 && tabs.length < 5);
 
@@ -108,8 +110,7 @@ class FancyBottomNavigationState extends State<FancyBottomNavigation>
   @override
   Widget build(BuildContext context) {
     return Stack(
-      overflow: Overflow.visible,
-      alignment: Alignment.bottomCenter,
+       alignment: Alignment.bottomCenter,
       children: <Widget>[
         Container(
           height: BAR_HEIGHT,

@@ -10,14 +10,14 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     var watcher = context.watch<MainCategoryProvider>();
 
     SizeConfig(context);
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(SubCategoriesScreen.namedRoute,arguments: {'name' :watcher.Category_data[category].name});
-      },
+        Navigator.of(context).pushNamed(SubCategoriesScreen.namedRoute,
+            arguments: {'name': watcher.categoryData[category].name});
+       },
       child: Stack(children: [
         Container(
           height: getScreenHeight() / 5,
@@ -26,12 +26,12 @@ class CategoryTile extends StatelessWidget {
           decoration: new BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20)),
             image: new DecorationImage(
-              image: new NetworkImage("${watcher.Category_data[category].imageUrl}"),
+              image: new NetworkImage(
+                  "${watcher.categoryData[category].imageUrl}"),
               fit: BoxFit.fill,
             ),
           ),
         ),
-     
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -41,7 +41,7 @@ class CategoryTile extends StatelessWidget {
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(10),
               child: Text(
-                "${watcher.Category_data[category].name}",
+                "${watcher.categoryData[category].name}",
                 style: TextStyle(color: Colors.white),
               ),
             ),

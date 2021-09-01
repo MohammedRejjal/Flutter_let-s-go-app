@@ -1,16 +1,9 @@
-import 'dart:convert';
-
-import 'package:ecommerce_final_project/models/details/details.dart';
-import 'package:ecommerce_final_project/models/main_category/main_category.dart';
-import 'package:ecommerce_final_project/models/details/details.dart';
-import 'package:ecommerce_final_project/models/sub_category/sub_category.dart';
-import 'package:ecommerce_final_project/providers/main_category_provider.dart';
-import 'package:ecommerce_final_project/screens/onbording/onboarding_screen.dart';
-import 'package:ecommerce_final_project/screens/widgets/getdata.dart';
+ 
+ import 'package:ecommerce_final_project/models/main_category/main_category.dart';
+ import 'package:ecommerce_final_project/models/sub_category/sub_category.dart';
+ 
 import 'package:ecommerce_final_project/services/lets_go_api.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
+ 
 
 class MainCategoryServices {
    List<MainCategory> categories = [];

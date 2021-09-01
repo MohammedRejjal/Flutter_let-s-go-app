@@ -2,7 +2,7 @@ import 'package:ecommerce_final_project/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget inputFile(
-    {   label, obscureText = false, TextEditingController? controller ,TextInputType ?InputType }) {
+    {   label, obscureText = false, TextEditingController? controller ,TextInputType ?inputType }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -19,7 +19,7 @@ Widget inputFile(
         height: 50.0,
         child: TextField(
           textInputAction: TextInputAction.next,
-          keyboardType:InputType ,
+          keyboardType:inputType ,
           controller: controller,
           obscureText: obscureText,
 

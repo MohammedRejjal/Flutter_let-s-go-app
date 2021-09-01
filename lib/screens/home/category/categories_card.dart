@@ -1,5 +1,4 @@
-import 'package:ecommerce_final_project/constants.dart';
-import 'package:ecommerce_final_project/providers/main_category_provider.dart';
+ import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
 import 'package:ecommerce_final_project/screens/home/category/category_tile.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class _CategoriesCardState extends State<CategoriesCard> {
     return  Container(
         height: getScreenHeight() / 2.5,
         child: GridView.builder(
-            itemCount: watcher.Category_data.length,
+            itemCount: watcher.categoryData.length,
             scrollDirection: Axis.horizontal,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

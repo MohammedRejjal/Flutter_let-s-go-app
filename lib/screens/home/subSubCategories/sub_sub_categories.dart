@@ -18,7 +18,7 @@ class _SubSubCategoriesState extends State<SubSubCategories> {
   @override
   Widget build(BuildContext context) {
     //final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
-    var watcher = context.watch<DetailsProvidder>().Detailes_data;
+    var watcher = context.watch<DetailsProvidder>().detailesData;
 
     return Scaffold(
       appBar: AppBar(),
@@ -33,8 +33,8 @@ class _SubSubCategoriesState extends State<SubSubCategories> {
                     crossAxisSpacing: 1,
                     childAspectRatio: .76),
                 itemBuilder: (context, index) {
-                  return BuildCard(watcher[index].mainImagUrl,
-                      watcher[index].name, watcher[index].infoDetails);
+                  return BuildCard(watcher .where((element) => element.id == widget.name).first.mainImagUrl,
+                      watcher.where((element) => element.id == widget.name).first.name, watcher.where((element) =>element.id == widget.name ).elementAt(index).infoDetails ,context);
                 })),
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (ctx) {

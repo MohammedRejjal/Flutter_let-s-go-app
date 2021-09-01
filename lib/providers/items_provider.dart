@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:ecommerce_final_project/models/items.dart';
-import 'package:ecommerce_final_project/models/shop.dart';
-import 'package:flutter/cupertino.dart';
+ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class ItemsProvader with ChangeNotifier {

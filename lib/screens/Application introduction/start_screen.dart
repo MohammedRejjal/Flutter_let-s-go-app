@@ -53,9 +53,9 @@ class _StartScreenState extends State<StartScreen> {
                     ) ,
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: inputFile(controller: myController1 ,label: 'Number' ,InputType: TextInputType.number),
+                      child: inputFile(controller: myController1 ,label: 'Number' ,inputType: TextInputType.number),
                     ),
-               creatButton(text: 'send number' ,  )
+               creatButton(text: 'send number' ,  func: (){})
                   ],
                 ),
               )

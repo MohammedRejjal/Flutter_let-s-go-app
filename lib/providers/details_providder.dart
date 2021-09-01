@@ -4,10 +4,10 @@ import 'package:flutter/cupertino.dart';
 
 class DetailsProvidder with ChangeNotifier {
   DetailsServices detailsServices = DetailsServices();
-  List<Detailes> Detailes_data = [];
+  List<Detailes> detailesData = [];
 
   Future getAllDetail() async {
-    Detailes_data = await detailsServices.getData();
+    detailesData = await detailsServices.getData();
     notifyListeners();
   }
 

@@ -133,6 +133,7 @@ class _ChipDemoState extends State<ChipDemo> {
       ),
       label: Text('Message'),
       onPressed: () {
+        // ignore: deprecated_member_use
         _key.currentState!.showSnackBar(SnackBar(
           content: Text('Message...'),
         ));

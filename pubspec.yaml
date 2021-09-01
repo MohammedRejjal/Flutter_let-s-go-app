@@ -39,16 +39,19 @@ dependencies:
   flutter_polyline_points: ^1.0.0
   geocoding: ^2.0.0
   maps_toolkit: ^2.0.0
+ 
 
 
 
 
+  email_validator: ^2.0.1
 
 
   #firebase
   firebase_core: 
   firebase_auth: 
   fancy_bottom_navigation: ^0.3.3
+  firebase_auth_rest :
 
 dev_dependencies:
   flutter_test:

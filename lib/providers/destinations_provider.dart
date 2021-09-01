@@ -4,10 +4,10 @@ import 'package:flutter/cupertino.dart';
 
 class DestinationsProvider with ChangeNotifier {
   DestinationsServices destinationsServices = DestinationsServices();
-    List<Destinations> destinations_data = [];
+     List<Destinations> destinationsData = [];
 
   Future getAllDestination() async {
-    destinations_data = await destinationsServices.getData();
+    destinationsData = await destinationsServices.getData();
      notifyListeners();
 
   }

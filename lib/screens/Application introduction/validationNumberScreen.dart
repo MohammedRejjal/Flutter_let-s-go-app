@@ -1,7 +1,7 @@
 import 'package:ecommerce_final_project/screens/otp_screen/otp_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class validationNumberScreen extends StatelessWidget {
   static const namedRoute = '/validationNumberScreen';
   TextEditingController mycontroller = TextEditingController();

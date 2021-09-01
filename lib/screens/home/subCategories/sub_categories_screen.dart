@@ -1,3 +1,4 @@
+import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
 import 'package:ecommerce_final_project/screens/home/see&do/latest%20experiences.dart';
@@ -18,21 +19,20 @@ class SubCategoriesScreen extends StatefulWidget {
 
 class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   @override
-  
-
   @override
   Widget build(BuildContext context) {
-     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
 
     if (arguments != null) print(arguments);
 
     var watcher = context.watch<SubCategoryProvider>();
-    var x= watcher.subCategory_data.where((element) => element.id==arguments['name']).toList();
-
+    var x = watcher.subCategoryData
+        .where((element) => element.id == arguments['name'])
+        .toList();
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        
         appBar: AppBar(
           title: Text(arguments['name']),
         ),
@@ -53,18 +53,20 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
               SizedBox(
                 height: getScreenHeight() / 3,
                 child: GridView.builder(
-                    itemCount: watcher.subCategory_data.where((element) => element.id==arguments['name']).length,
+                    itemCount: watcher.subCategoryData
+                        .where((element) => element.id == arguments['name'])
+                        .length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount:
-                          watcher.subCategory_data.length > 6 ? 3 : 2,
+                          watcher.subCategoryData.length > 6 ? 3 : 2,
                       mainAxisSpacing: 1,
                       crossAxisSpacing: 1,
                       childAspectRatio: 0.75,
                     ),
                     itemBuilder: (context, index) {
-                      return SunCategoriesTiles(name:  x[index].name ,
+                      return SunCategoriesTiles(
+                        name: x[index].name,
                         id: arguments['name'],
-                        
                       );
                     }),
               ),
@@ -77,8 +79,10 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                       style:
                           TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
                     ),
-                    LatestExpereans(count: 2)
-                  ],
+                    LatestExpereans(count:
+                     context.read<DetailsProvidder>().detailesData.where((element) =>
+                            element.category ==  arguments['name']).length)
+                  ]
                 ),
               ),
             ],
