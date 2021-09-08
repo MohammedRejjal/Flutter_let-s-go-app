@@ -11,6 +11,8 @@ import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/routes.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
+import 'package:ecommerce_final_project/screens/splash_screen/Splashscreen.dart';
+import 'package:ecommerce_final_project/screens/test.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: LoginScreen(),
+        home: SplashScreen(),
       ),
     );
   }

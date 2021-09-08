@@ -8,7 +8,7 @@ class Users {
   int number;
   String name;
   String email;
-  List<String> ? favirateList=[];
+ List< String> ? favirateList=[];
   String password;
   List<String>? history=[];
 
@@ -17,8 +17,8 @@ class Users {
       required this.name,
       required this.email,
       required this.password,
-        this.favirateList,
-        this.history});
+       required this.favirateList,
+       required this.history});
 
   factory Users.fromJson(Map<String, dynamic> json) =>
       _$UsersFromJson(json);

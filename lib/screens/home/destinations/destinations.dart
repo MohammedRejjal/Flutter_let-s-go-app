@@ -81,13 +81,18 @@ class _DestinationsState extends State<Destinations> {
                 return SafeArea(
                   child: Scaffold(
                     appBar: AppBar(
-                      title: Text("${ context.read<DestinationsProvider>()
-                                        .destinationsData[index].name}"),
+                      title: Text(
+                          "${context.read<DestinationsProvider>().destinationsData[index].name}"),
                     ),
                     body: Container(
                       height: double.infinity,
-                      width: getScreenWidth()/2,
-                      child: LatestExpereans(axis: false,
+                      width: getScreenWidth() / 2,
+                      child: LatestExpereans(
+                          genaratic: context
+                              .read<DestinationsProvider>()
+                              .destinationsData[index]
+                              .name,
+                          axis: false,
                           count: watcher
                               .where((element) =>
                                   element.location ==

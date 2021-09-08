@@ -1,4 +1,5 @@
 import 'package:ecommerce_final_project/providers/user_provider.dart';
+import 'package:ecommerce_final_project/screens/widgets/show_dalog.dart';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -100,7 +101,7 @@ class SignUpScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               filled: true,
-                              labelText: 'Enter your Name',
+                              labelText: 'Enter your Full Name',
                               enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.blueGrey),
@@ -161,6 +162,7 @@ class SignUpScreen extends StatelessWidget {
                           textInputAction: TextInputAction.next,
                           cursorColor: Colors.blueGrey,
                           style: TextStyle(color: Colors.white),
+                          obscureText: true,
                           decoration: InputDecoration(
                               filled: true,
                               labelText: 'Enter your Password',
@@ -193,6 +195,7 @@ class SignUpScreen extends StatelessWidget {
                           textInputAction: TextInputAction.next,
                           cursorColor: Colors.blueGrey,
                           style: TextStyle(color: Colors.white),
+                          obscureText: true,
                           decoration: InputDecoration(
                               filled: true,
                               labelText: 'Confirm Password',
@@ -237,28 +240,37 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
-                          try {
-                            var reader = context.read<Userprovider>();
-                            await reader.registration(
-                                emailController.text, passController.text);
-                            print('insingin__' + '${reader.user!.userId}');
-                            reader.setUser(
-                                url: '${reader.user!.userId}',
-                                number: int.parse(numberController.text),
-                                name: nameController.text,
-                                email: emailController.text,
-                                password: passController.text,
-                                favirateList: [],
-                                history: []);
+                          if (passController.text == confirmController.text) {
+                            try {
+                              var reader = context.read<Userprovider>();
+                              await reader.registration(
+                                  emailController.text, passController.text);
+                              print('insingin__' + '${reader.user!.userId}');
+                              reader.setUser(
+                                  url: '${reader.user!.userId}',
+                                  number: int.parse(numberController.text),
+                                  name: nameController.text,
+                                  email: emailController.text,
+                                  password: passController.text,
+                                  favirateList: [""],
+                                  history: [""]);
 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return LoginScreen();
-                              }),
-                            );
-                          } catch (e) {
-                            print(e);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return LoginScreen();
+                                }),
+                              );
+                            } catch (e) {
+                              if (e.toString() == "EMAIL_EXISTS") {
+                                showMaterialDialog(context,
+                                    "This email address is already in use.");
+                              } else { showMaterialDialog(context, "$e"); print(e);}
+                             
+                            }
+                          } else {
+                            showMaterialDialog(context,
+                                "password and Confirim password is not same");
                           }
                         }
                       },

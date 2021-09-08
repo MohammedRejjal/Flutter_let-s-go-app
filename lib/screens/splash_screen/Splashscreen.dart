@@ -1,7 +1,13 @@
 import 'dart:async';
 
+import 'package:ecommerce_final_project/providers/user_provider.dart';
+import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
+import 'package:ecommerce_final_project/screens/home/home_screen.dart';
 import 'package:ecommerce_final_project/screens/onbording/onboarding_screen.dart';
+import 'package:ecommerce_final_project/screens/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -13,9 +19,23 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => OnBoardingScreen()));
+    Timer(Duration(seconds: 2), () async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+     var user = prefs.getString("userid");
+      var email = prefs.getString("Email");
+      var pass = prefs.getString("Pass");
+     
+      var start = prefs.getBool("Start");
+      if (email == null && pass == null) {
+        start == true
+            ? Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => LoginScreen()))
+            : Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => OnBoardingScreen()));
+      } else {
+         
+        Navigator.of(context).pushNamed(BottonBar.namedRoute);
+      }
     });
   }
 

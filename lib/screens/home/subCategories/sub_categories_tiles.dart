@@ -21,45 +21,50 @@ class _SunCategoriesTilesState extends State<SunCategoriesTiles> {
   Widget build(BuildContext context) {
     var watcher = context.watch<SubCategoryProvider>();
 
-    return Column(
-      children: [
-        GestureDetector(
-          child: Column(
-            children: [
-              ClipOval(
-                  child: Container(
-                      color: Colors.blue[50],
-                      padding: EdgeInsets.all(15),
-                   // child: Icon(IconData(int.parse("0xef75")
-                     child: Icon(
-                        Icons.ac_unit,
-                        color: Colors.blueAccent,
-                        size: 40,
-                       )
-                       )
-                       ),
-              SizedBox(
-                height: 9,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            GestureDetector(
+              child: Column(
+                children: [
+                  ClipOval(
+                      child: Container(
+                          color: Colors.blue[50],
+                          padding: EdgeInsets.all(15),
+                       // child: Icon(IconData(int.parse("0xef75")
+                         child: Icon(
+                            Icons.ac_unit,
+                            color: Colors.blueAccent,
+                            size: 40,
+                           )
+                           )
+                           ),
+                  SizedBox(
+                    height: 9,
+                  ),
+                  Container(
+                    child: Text(widget.name),
+                  ),
+                ],
               ),
-              Container(
-                child: Text(widget.name),
-              ),
-            ],
-          ),
-          onTap: () {
-            //   Navigator.of(context).pushNamed(SubSubCategories.namedRoute);
-            print('name=${widget.name}');
-            print('id=${widget.id}');
-            Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-              return SubSubCategories( name:widget.name , );
-            }));
-          },
+              onTap: () {
+                //   Navigator.of(context).pushNamed(SubSubCategories.namedRoute);
+                print('name=${widget.name}');
+                print('id=${widget.id}');
+                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                  return SubSubCategories( name:widget.name , );
+                }));
+              },
+            ),
+         
+         
+          ],
+    
+          
         ),
-   
-   
-      ],
-
-      
+      ),
     );
   }
 }

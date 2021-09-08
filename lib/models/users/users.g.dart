@@ -12,11 +12,11 @@ Users _$UsersFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     email: json['email'] as String,
     password: json['password'] as String,
-    favirateList: (json['favirateList'] as List<dynamic>)
-        .map((e) => e as String)
+    favirateList: (json['favirateList'] as List<dynamic>?)
+        ?.map((e) => e as String)
         .toList(),
     history:
-        (json['history'] as List<dynamic>).map((e) => e as String).toList(),
+        (json['history'] as List<dynamic>?)?.map((e) => e as String).toList(),
   );
 }
 

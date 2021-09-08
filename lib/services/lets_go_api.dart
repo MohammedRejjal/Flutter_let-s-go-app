@@ -59,7 +59,6 @@ class AppApi {
 
    Future patch(String url, var body) async {
     var responeJson;
-    print(body);
     try {
       var data =
           await http.patch(Uri.parse(baseUrl + url), body: json.encode(body));
@@ -75,7 +74,28 @@ class AppApi {
     }
     return responeJson;
   }
+
+  Future delete(String url) async {
+    var responeJson;
+     try {
+      var data =
+          await http.delete(Uri.parse(baseUrl + url ),);
+
+      if (data.statusCode == 200) {
+        responeJson = jsonEncode(data.body);
+      }
+      if (data.statusCode == 500) {
+        print('wrong for connection with API');
+      }
+    } catch (e) {
+      print(e);
+    }
+    return responeJson;
+  }
 }
+
+
+
 
 dynamic processedResponseDecode(http.Response response) {
   switch (response.statusCode) {

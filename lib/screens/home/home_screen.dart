@@ -4,6 +4,7 @@ import 'package:ecommerce_final_project/providers/auth_provider.dart';
 import 'package:ecommerce_final_project/providers/destinations_provider.dart';
 import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/providers/general_provider.dart';
+import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/providers/slider_images_provider.dart';
 import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
 import 'package:ecommerce_final_project/providers/user_provider.dart';
@@ -11,9 +12,13 @@ import 'package:ecommerce_final_project/screens/home/category/categories_card.da
 import 'package:ecommerce_final_project/screens/home/destinations/destinations.dart';
 import 'package:ecommerce_final_project/screens/home/see&do/latest%20experiences.dart';
 import 'package:ecommerce_final_project/screens/onbording/widgets/dot.dart';
+import 'package:ecommerce_final_project/screens/widgets/search_text_field.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,6 +28,7 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
+bool x = false;
 var pageIndex = 0;
 PageController _pageController = PageController(initialPage: 0);
 
@@ -30,18 +36,26 @@ class _HomeScreenState extends State<HomeScreen> {
   CarouselController buttonCarouselController = CarouselController();
   @override
   void initState() {
-    context.read<DestinationsProvider>().getAllDestination();
-    context.read<DetailsProvidder>().getAllDetail();
-    context
-        .read<Userprovider>()
-        .getUser(context.read<Userprovider>().user!.userId);
-
     super.initState();
   }
 
   @override
+  void didChangeDependencies() async {
+    if (x == false) {
+      context
+          .read<Userprovider>()
+          .getUser(context.read<Userprovider>().user!.userId);
+      context.read<DestinationsProvider>().getAllDestination();
+      context.read<DetailsProvidder>().getAllDetail();
+      context.read<MainCategoryProvider>().getAllCategory();
+      locationChange();
+      x = true;
+    }
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
-  
     List imageList = context.read<SliderImageProvider>().imageList;
 
     var listOfDot = [];
@@ -77,21 +91,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Column(
                       children: [
                         SizedBox(
-                          height: 85,
-                          child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Row(
-                              children: [
-                                Text(
-                                  '''Do you want to take a trip and
-      want to change your mood?''',
-                                  style: TextStyle(
-                                      fontSize: getScreenWidth() / 35,
-                                      color: Colors.amber[100]),
-                                ),
-                              ],
-                            ),
-                          ),
+                          height: 25,
+                        ),
+                        SearchTextField(onWhiteBackGround: false),
+                        SizedBox(
+                          height: 25,
                         ),
                         CarouselSlider(
                           carouselController: buttonCarouselController,
@@ -111,7 +115,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 print('userUrlccccccccc =' +
                                     "${context.read<Userprovider>().userData!.name}");
 
-                                    context.read<Userprovider>().addHistoty(url: context.read<Userprovider>().user!.userId, history:{"2":"asda"});
+                                context.read<Userprovider>().addHistoty(
+                                    url: context
+                                        .read<Userprovider>()
+                                        .user!
+                                        .userId,
+                                    history: {"2": "asda"});
                               },
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8),
@@ -152,7 +161,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           'See & Do',
                           style: TextStyle(fontSize: 18, color: Colors.black45),
                         )),
-                        LatestExpereans(axis: true,
+                        LatestExpereans(
+                            genaratic: '',
+                            axis: true,
                             count: context
                                 .read<DetailsProvidder>()
                                 .detailesData
@@ -223,4 +234,16 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+Map<String, double> myloclc = {"latitude": 0.0, "longitude": 0.0};
+locationChange() async {
+  myLocation = await location.getLocation();
+
+  location.onLocationChanged.listen((event) {
+    Future.delayed(Duration(seconds: 1)).then((value) {
+      myloclc['latitude'] = myLocation.latitude!;
+      myloclc["longitude"] = myLocation.longitude!;
+    });
+  });
 }

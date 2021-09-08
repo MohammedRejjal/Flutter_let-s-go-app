@@ -41,9 +41,16 @@ dependencies:
   maps_toolkit: ^2.0.0
  
  
-
+  flutter_rating_bar: ^4.0.0
 
   email_validator: ^2.0.1
+  rating_dialog: ^2.0.1
+  search_page: ^2.0.0+1
+  shared_preferences: ^2.0.7
+  haversine_distance: ^1.2.1
+  map_launcher: ^2.1.1
+
+
 
 
   #firebase

@@ -1,10 +1,13 @@
+import 'package:ecommerce_final_project/screens/favirate/favirate_screen.dart';
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
+import 'package:ecommerce_final_project/screens/home/notifications/notifications_screen.dart';
+import 'package:ecommerce_final_project/screens/home/profile/profile_screen.dart';
 import 'package:ecommerce_final_project/screens/widgets/FancyBottomNavigation.dart';
 import 'package:ecommerce_final_project/size_config.dart';
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class BottonBar extends StatefulWidget {
-    static const namedRoute = '/BottonBar';
+  static const namedRoute = '/BottonBar';
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -26,8 +29,7 @@ class _MyHomePageState extends State<BottonBar> {
         ),
       ),
       bottomNavigationBar: SizedBox(
-
-        child:  FancyBottomNavigation(
+        child: FancyBottomNavigation(
           tabs: [
             TabData(
               iconData: Icons.home,
@@ -42,8 +44,8 @@ class _MyHomePageState extends State<BottonBar> {
               title: "notifications",
             ),
             TabData(
-              iconData: Icons.bookmark_add,
-              title: "booking",
+              iconData: Icons.person,
+              title: "profile",
             ),
           ],
           activeIconColor: Color.fromRGBO(207, 181, 59, 1),
@@ -72,17 +74,11 @@ class _MyHomePageState extends State<BottonBar> {
       case 0:
         return HomeScreen();
       case 1:
-        return Container(
-          color: Colors.blue,
-        );
+        return FavirateScreen();
       case 2:
-      return Container(
-          color: Colors.blueAccent,
-        );
+        return NotificationsScreen();
       default:
-      return Container(
-          color: Colors.blueGrey,
-        );
+        return Account();
     }
   }
 }

@@ -1,11 +1,15 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_final_project/models/details/details.dart';
+import 'package:ecommerce_final_project/providers/details_providder.dart';
+import 'package:ecommerce_final_project/screens/feedback/feedback_screen.dart';
+import 'package:ecommerce_final_project/screens/home/details/appBar/home_bar.dart';
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
 import 'package:ecommerce_final_project/screens/map/map.dart';
 import 'package:ecommerce_final_project/screens/onbording/widgets/dot.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen(this.watcher, {Key? key}) : super(key: key);
@@ -23,11 +27,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
     super.dispose();
   }
  
+ @override
+  void initState() {
+    // context.read<DetailsProvidder>().getFeedback('${widget.watcher.first.name}/feedback.json');
+    super.initState();
+  }
 
   @override
-  Widget build(BuildContext context) {
-    CarouselController buttonCarouselController = CarouselController();
-
+  Widget build(BuildContext context) {    CarouselController buttonCarouselController = CarouselController();
+context.read<DetailsProvidder>().getFeedback('${widget.watcher.first.name}/feedback.json');
     var listOfDot = [];
     var listofimage = widget.watcher.first.imagesUrl;
     void getDot() {
@@ -41,7 +49,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        appBar: AppBar( title: Text("${widget.watcher.first.location}"), ),
+        appBar: AppBar( title: Text("${widget.watcher.first.name}"), ),
         body: Column(
           children: [
             Stack(
@@ -126,54 +134,11 @@ SizedBox(
               child: TabBarView(
                 children: [
                   // first tab bar view widget
-                      SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Padding(
-                                    padding: const EdgeInsets.only(left: 8, bottom: 2, top: 10),
-                                    child: Row(
-                                      children: [
-                                         Text(
-                                          'details',
-                                          style: TextStyle(
-                              fontSize: getScreenWidth() / 40,
-                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Spacer(),
-                                        Icon(Icons.location_on),
-                                        Text(
-                                          '${widget.watcher.first.location}',
-                                          style: TextStyle(fontSize: getScreenWidth() / 40),
-                                        ),
-                                        SizedBox(
-                                          width: 30,
-                                        )
-                                      ],
-                                    ),
-                                  ), Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Card(color: Colors.white70,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          '${widget.watcher.first.infoDetails}',
-                                          style: TextStyle(fontSize: getScreenWidth() / 50),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                          ],
-                        ),
-                      ),
+                     HomeBar(watcher: widget.watcher,),
            
-                       Container(
-                     color: Colors.red,
-                    child: Center(
-                      child: Text(
-                        'Bike',
-                      ),
-                    ),
-                  ),  MapScreen(widget. watcher),    Container(
+                    FeedBackScreen(watcher: widget.watcher)
+                    ,  MapScreen(widget. watcher),    
+                    Container(
                      color: Colors.red,
                     child: Center(
                       child: Text(

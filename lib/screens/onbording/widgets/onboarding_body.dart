@@ -1,9 +1,11 @@
 import 'package:ecommerce_final_project/models/onboarding_content/onboarding_content.dart';
+import 'package:ecommerce_final_project/screens/Application%20introduction/SignUp.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
 import 'package:ecommerce_final_project/screens/onbording/widgets/dot.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/validationNumberScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingBody extends StatefulWidget {
   const OnBoardingBody({
@@ -22,7 +24,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [ 
+      children: [
         PageView.builder(
           onPageChanged: (int y) {
             setState(() {
@@ -35,47 +37,56 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             return Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 40,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Expanded(
+                    flex: 6,
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "${widget.content[pageIndex].imageURL}",
+                            fit: BoxFit.fill,
+                            height: MediaQuery.of(context).size.height / (2.5),
+                            width: double.infinity,
+                          ),
+                        ],
+                      ),
                     ),
-                    Expanded(
-                      flex: 7,
-                      child: Container(
+                  ),
+                  Expanded(
+                    flex: 5,
+                    child: Card(
+                      elevation: 100,
+                      color: Colors.blueGrey[100],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            Image.asset(
-                              "${widget.content[pageIndex].imageURL}",
-                              fit: BoxFit.fill,
-                              height:
-                                  MediaQuery.of(context).size.height / (2.5),
-                              width: double.infinity,
+                            Text(
+                              "${widget.content[pageIndex].text}",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
+                            SizedBox(
+                              height: 40,
+                            ),
+                            Text("${widget.content[pageIndex].subText}",
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w400)),
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Column(
-                        children: [
-                          Text("${widget.content[pageIndex].text}"),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text("${widget.content[pageIndex].subText}"),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-             
+                  )
+                ],
+              ),
             );
           },
         ),
@@ -104,9 +115,13 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: Colors.green, fixedSize: Size(100, 50)),
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, validationNumberScreen.namedRoute);
+                          onPressed: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setBool("Start", true);
+
+                            Navigator.pushReplacementNamed(
+                                context, SignUpScreen.namedRoute);
                           },
                           child: Center(
                             child: Text('Sign Up'),
@@ -118,8 +133,11 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: Colors.green, fixedSize: Size(100, 50)),
-                          onPressed: () {
-                            Navigator.pushNamed(
+                          onPressed: ()async {
+                             SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setBool("Start", true);
+                            Navigator.pushReplacementNamed(
                                 context, LoginScreen.namedRoute);
                           },
                           child: Center(
@@ -138,14 +156,28 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                               pageIndex = 3;
                             });
                           },
-                          child: Text('Skip')),
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 10, top: 10, left: 25, right: 25),
+                              child: Text('Skip'),
+                            ),
+                            color: Colors.blueGrey[50],
+                          )),
                       TextButton(
                           onPressed: () {
                             _pageController.nextPage(
                                 duration: Duration(milliseconds: 1000),
                                 curve: Curves.bounceInOut);
                           },
-                          child: Text('next'))
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 10, top: 10, left: 25, right: 25),
+                              child: Text('Next'),
+                            ),
+                            color: Colors.blueGrey[50],
+                          ))
                     ],
                   ),
             SizedBox(

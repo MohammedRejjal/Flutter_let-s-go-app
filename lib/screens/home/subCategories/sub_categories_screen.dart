@@ -30,9 +30,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
         .where((element) => element.id == arguments['name'])
         .toList();
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text(arguments['name']),
         ),
@@ -50,8 +48,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                   style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(
-                height: getScreenHeight() / 3,
+              Container(height: getScreenHeight() / 2.5,
                 child: GridView.builder(
                     itemCount: watcher.subCategoryData
                         .where((element) => element.id == arguments['name'])
@@ -79,7 +76,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                       style:
                           TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
                     ),
-                    LatestExpereans(count:
+                    LatestExpereans(
+                      genaratic: '',
+                      count:
                      context.read<DetailsProvidder>().detailesData.where((element) =>
                             element.category ==  arguments['name']).length ,axis: true,)
                   ]
@@ -88,7 +87,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
             ],
           ),
         ),
-      ),
+      
     );
   }
 }

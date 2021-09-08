@@ -1,7 +1,7 @@
 import 'package:ecommerce_final_project/models/details/details.dart';
-import 'package:ecommerce_final_project/screens/map/widgets/calcDistance.dart';
+import 'package:ecommerce_final_project/screens/map/widgets/distance.dart';
 import 'package:ecommerce_final_project/screens/map/widgets/getMyLocation.dart';
-import 'package:ecommerce_final_project/screens/map/widgets/getdis.dart';
+import 'package:ecommerce_final_project/screens/map/widgets/googlemap.dart';
 import 'package:ecommerce_final_project/screens/map/widgets/setMarker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -36,7 +36,6 @@ class MapSampleState extends State<MapScreen> {
 
   @override
   build(BuildContext context) {
-    _getlocation();
     print('in build');
     setMarker(LocationData.fromMap({
       'latitude': widget.watcher.first.latitude,
@@ -65,8 +64,9 @@ class MapSampleState extends State<MapScreen> {
         children: [
           FloatingActionButton(
             onPressed: () {
-              print(calcDistance(polylineCoordinates));
-             },
+              gotomap(widget.watcher.first.latitude,
+                  widget.watcher.first.longitude);
+            },
             child: Icon(Icons.gps_fixed),
           ),
         ],
@@ -75,8 +75,7 @@ class MapSampleState extends State<MapScreen> {
   }
 }
 
-_getlocation() async {
+getlocation() async {
   _myLocation = await location.getLocation();
-  polylineCoordinates
-      .add(LatLng(_myLocation.latitude!, _myLocation.longitude!));
+  return [_myLocation.altitude, _myLocation.longitude];
 }

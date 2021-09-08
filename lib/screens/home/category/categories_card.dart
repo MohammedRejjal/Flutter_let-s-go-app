@@ -1,6 +1,6 @@
  import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
-import 'package:ecommerce_final_project/screens/home/category/category_tile.dart';
+import 'package:ecommerce_final_project/screens/home/category/widget/category_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../size_config.dart';
@@ -18,7 +18,6 @@ class _CategoriesCardState extends State<CategoriesCard> {
      
      
     context.read<SubCategoryProvider>().getAllSubCategory();
-    context.read<MainCategoryProvider>().getAllCategory();
     super.initState();
   }
 

@@ -4,10 +4,12 @@ import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/SignUp.dart';
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
 import 'package:ecommerce_final_project/screens/widgets/bottom_bar.dart';
+import 'package:ecommerce_final_project/screens/widgets/show_dalog.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 bool? guest;
 final TextEditingController myController1 = TextEditingController();
@@ -342,12 +344,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               onPressed: () async {
                                 if (formKey.currentState!.validate()) {
-                                   await context
-                                      .read<Userprovider>()
-                                      .loginUser(myController1.text,
-                                          myController2.text);
+                                  try {
+                                    SharedPreferences prefs =
+                                        await SharedPreferences.getInstance();
+                                         
+                                    prefs.setString(
+                                        "Email", myController1.text);
+                                        prefs.setString(
+                                        "Pass", myController2.text);
+                                    await context
+                                        .read<Userprovider>()
+                                        .loginUser(myController1.text,
+                                            myController2.text);
+                                             
 
-                                  
                                     print('userin login :' +
                                         context
                                             .read<Userprovider>()
@@ -356,15 +366,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Navigator.of(context).pushNamed(
                                       BottonBar.namedRoute,
                                     );
-                                  
-                                } else {
-                                  {
-                                    final snackBar = SnackBar(
-                                        content: Text(
-                                            'The e-mail address and/or password you specified are not correct'));
-
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(snackBar);
+                                  } catch (e) {
+                                    showMaterialDialog(context,
+                                        "The email or password is incorrect.");
+                                    print(e);
                                   }
                                 }
                               }),

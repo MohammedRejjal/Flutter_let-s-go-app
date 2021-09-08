@@ -5,31 +5,46 @@ import 'package:flutter/cupertino.dart';
 
 class Userprovider with ChangeNotifier {
   UserServices userservices = UserServices();
-  var userData;
-   AuthData? user;
+  Users? userData;
+  AuthData? user;
 
-   bool isLoading = false;
+  bool isLoading = false;
 
   bool isSigningIn = true;
+  List<String> favirateData = [];
 
   Future registration(String email, String password) async {
     user = await userservices.singUpuser(email, password);
-     notifyListeners();
+    notifyListeners();
   }
 
- Future loginUser(String email, String password) async {
-   // isLoading = true;
-    notifyListeners();
+  Future loginUser(String email, String password) async {
+    // isLoading = true;
     user = await userservices.singInUser(email, password);
-   // isLoading = false;
+    // isLoading = false;
     notifyListeners();
-   return user;
+    return user;
   }
 
   Future getUser(String url) async {
-    userData = await userservices.getData(url);
-    notifyListeners();
+    try {
+      userData = await userservices.getData(url);
+    } catch (e) {
+      print("error1");
+    }finally{    notifyListeners();
+}
   }
+
+       gettheUser(String url) async {
+    try {
+     return await userservices.getnameData(url);
+    } catch (e) {
+      print("error2");
+    }finally{    notifyListeners();
+}
+  }
+
+ 
 
   Future setUser(
       {var url,
@@ -37,8 +52,8 @@ class Userprovider with ChangeNotifier {
       required String name,
       required String email,
       required String password,
-      var favirateList,
-      var history}) async {
+     required List< String> favirateList,
+     required List <String> history}) async {
     await userservices.setDataSS(
         url: url,
         number: number,
@@ -52,6 +67,20 @@ class Userprovider with ChangeNotifier {
 
   Future addHistoty({required url, required history}) async {
     await userservices.addToHistory(url: url, history: history);
+    notifyListeners();
+  }
+
+  Future deletehistory({required url, required name}) async {
+    await userservices.delateHistory(url: url, name: name);
+    notifyListeners();
+  }
+
+  Future getFavirateData({
+    required url,
+  }) async {
+    print("----------------------");
+    favirateData = await userservices.getfaviret(url: url);
+
     notifyListeners();
   }
 }
