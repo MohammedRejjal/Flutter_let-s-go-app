@@ -35,9 +35,9 @@ class Userprovider with ChangeNotifier {
 }
   }
 
-       gettheUser(String url) async {
+       gettheUser(String url)   {
     try {
-     return await userservices.getnameData(url);
+     return   userservices.getnameData(url);
     } catch (e) {
       print("error2");
     }finally{    notifyListeners();

@@ -4,6 +4,7 @@ import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/screens/feedback/widget/stars.dart';
 import 'package:ecommerce_final_project/services/lets_go_api.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -79,12 +80,19 @@ class _CommentState extends State<Comment> {
                                   Spacer(),
                                   Star(context
                                       .watch<DetailsProvidder>()
-                                      .feedback.values.elementAt(index)['rating']),
+                                      .feedback
+                                      .values
+                                      .elementAt(index)['rating']),
                                 ],
                               ),
-                              Text(context
-                                      .watch<DetailsProvidder>()
-                                      .feedback.values.elementAt(index)['feedback']),
+                              SizedBox(height: 10,),
+                              SingleChildScrollView(
+                                child: Text(context
+                                    .watch<DetailsProvidder>()
+                                    .feedback
+                                    .values
+                                    .elementAt(index)['feedback']),
+                              ),
                             ],
                           ),
                         ),

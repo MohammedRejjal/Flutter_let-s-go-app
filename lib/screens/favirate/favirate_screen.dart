@@ -121,13 +121,16 @@ class _FavirateScreenState extends State<FavirateScreen> {
                                 children: [
                                   IconButton(
                                       onPressed: () {
-                                        context.watch<Userprovider>().deletehistory(
+                                        context.read<Userprovider>().deletehistory(
                                             url: context
                                                 .read<Userprovider>()
                                                 .user!
                                                 .userId,
                                             name:
-                                                "${context.read<DetailsProvidder>().detailesData.where((element) => element.name == context.watch<Userprovider>().favirateData[index]).first.name}");
+                                                "${context.read<DetailsProvidder>().detailesData.where((element) => element.name == context.read<Userprovider>().favirateData[index]).first.name}");
+                                                setState(() {
+                                                  
+                                                });
                                       },
                                       icon: Icon(Icons.delete)),
                                   Spacer(),
