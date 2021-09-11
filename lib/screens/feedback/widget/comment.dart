@@ -39,7 +39,7 @@ class _CommentState extends State<Comment> {
                 Column(
                   children: [
                     Text(
-                      'Rate this app',
+                      'Rate your journey',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -56,6 +56,7 @@ class _CommentState extends State<Comment> {
             ),
           ),
         ),
+       
         Expanded(
           child: ListView.builder(
               itemCount: context.watch<DetailsProvidder>().feedback.length,
@@ -63,37 +64,55 @@ class _CommentState extends State<Comment> {
                 print(
                     "objectllasd ${context.watch<DetailsProvidder>().feedback.length}");
                 return context.watch<DetailsProvidder>().feedback[index] != 0
-                    ? Card(
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          width: double.infinity,
-                          height: 100,
-                          color: Colors.blueGrey[200],
-                          child: Column(
-                            children: [
-                              Row(
+                          child: Card(
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            shadowColor: Colors.blue[300],
+                            color: Colors.blueGrey[50],
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              width: double.infinity,
+                              height: 100,
+                              child: Column(
                                 children: [
-                                  // Text(
-                                  // '${context.watch<DetailsProvidder>().feedback[index] != 0 ? context.watch<DetailsProvidder>().feedback[index] : ""}'),
-                                  Text(
-                                      "${context.watch<DetailsProvidder>().feedback.keys.elementAt(index)}"),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        // Text(
+                                        // '${context.watch<DetailsProvidder>().feedback[index] != 0 ? context.watch<DetailsProvidder>().feedback[index] : ""}'),
+                                        Text(
+                                            "${context.watch<DetailsProvidder>().feedback.keys.elementAt(index)}"),
 
-                                  Spacer(),
-                                  Star(context
-                                      .watch<DetailsProvidder>()
-                                      .feedback
-                                      .values
-                                      .elementAt(index)['rating']),
+                                        Spacer(),
+                                        Star(context
+                                            .watch<DetailsProvidder>()
+                                            .feedback
+                                            .values
+                                            .elementAt(index)['rating']),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  SingleChildScrollView(
+                                    child: Text(context
+                                        .watch<DetailsProvidder>()
+                                        .feedback
+                                        .values
+                                        .elementAt(index)['feedback']),
+                                  ),
                                 ],
                               ),
-                              SizedBox(height: 10,),
-                              SingleChildScrollView(
-                                child: Text(context
-                                    .watch<DetailsProvidder>()
-                                    .feedback
-                                    .values
-                                    .elementAt(index)['feedback']),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       )

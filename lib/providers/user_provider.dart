@@ -60,18 +60,18 @@ class Userprovider with ChangeNotifier {
         name: name,
         email: email,
         password: password,
-        favirateList: [''],
-        history: ['']);
+        favirateList: [ ],
+        history: [ ]);
     notifyListeners();
   }
 
-  Future addHistoty({required url, required history}) async {
-    await userservices.addToHistory(url: url, history: history);
+  Future addFavirate({required url, required favirate}) async {
+    await userservices.addToFavirate(url: url, history: favirate);
     notifyListeners();
   }
 
-  Future deletehistory({required url, required name}) async {
-    await userservices.delateHistory(url: url, name: name);
+  Future deleteFavirate({required url, required name}) async {
+    await userservices.delateFavirate(url: url, name: name);
     notifyListeners();
   }
 

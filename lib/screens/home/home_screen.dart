@@ -111,17 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           items: imageList.map((e) {
                             return GestureDetector(
-                              onTap: () async {
-                                print('userUrlccccccccc =' +
-                                    "${context.read<Userprovider>().userData!.name}");
-
-                                context.read<Userprovider>().addHistoty(
-                                    url: context
-                                        .read<Userprovider>()
-                                        .user!
-                                        .userId,
-                                    history: {"2": "asda"});
-                              },
+                              onTap: () {},
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8),
                                 child: Stack(

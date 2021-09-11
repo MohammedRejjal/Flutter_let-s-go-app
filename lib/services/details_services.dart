@@ -29,7 +29,8 @@ class DetailsServices {
   Future getFeedback(String url) async {
     try {
       print('url $url');
-      Map<String, dynamic> res = await restApi.get('details/$url');
+
+      Map<String, dynamic> res = await restApi.get('details/$url')??{};
 
       print("res++  $res");
 
@@ -77,26 +78,24 @@ class DetailsServices {
     try {
       AppApi appApi = AppApi();
       appApi.pul(
-          'details/Ma\'in Hot Springs.json',
+          'details/Dead Sea.json',
           setDetailes(
-            {},
+            [{'FREE':0.0},{'free':1}],
             {},
             category: 'tourism',
             id: "medical-tourism",
-            name: 'Ma\'in Hot Springs',
-            mainImagUrl: "https://static.toiimg.com/photo/59265784.cms",
+            name: 'Dead Sea',
+            mainImagUrl: "https://velvetescape.com/wp-content/uploads/2011/11/IMG_2370-3-1280x920.jpg",
             location: 'Amman',
-            latitude: 31.610038249544758,
-            longitude: 35.611427780719346,
+            latitude: 31.60401778310353, 
+            longitude: 35.56165723838569,
             infoDetails:
-                """Main hot springs resort & Spa  presents many Jordanian life experiences in a comfortable, wholesome and sustainable way, we offer the opportunity to feel the true pulse of the Middle East.. from its traditional mystical roots to its present day uniqueness.
-Life service is attentive and personalized, with our hosts being especially knowledgeable and caring. We are proud to offer Arabic hospitality. 
-Set like an oasisi in the dramatic terrain, the location is easily accessible and defines the resort and spa experiences  in the Middle East,making it a destination of choice for those seeking the perfect retreat to relax and be pampered whilist enjoying the therapeutic benefits of Ma'in Hot spring  waterfalls""",
+                "The Dead Sea has attracted visitors from around the Mediterranean Basin for thousands of years. It was one of the world's first health resorts (for Herod the Great), and it has been the supplier of a wide variety of products, from asphalt for Egyptian mummification to potash for fertilisers. Today, tourists visit the sea on its Israeli, Jordanian and West Bank coastlines. The Palestinian tourism industry has been met with setbacks in developing along the West Bank coast.",
             imagesUrl: [
-              'https://tashatgo.com/wp-content/uploads/2021/07/%D9%83.jpg',
-              'https://tashatgo.com/wp-content/uploads/2021/07/201112261367680.jpg',
-              'https://tashatgo.com/wp-content/uploads/2021/07/img_1417795335_812.jpg',
-              'https://tashatgo.com/wp-content/uploads/2021/07/%D8%AA%D9%86%D8%B2%D9%8A%D9%84-3.jpg',
+              'https://pix10.agoda.net/geo/city/18362/1_18362_02.jpg?s=1920x822',
+              'https://velvetescape.com/wp-content/uploads/2011/11/IMG_2370-3-1280x920.jpg',
+              'https://cdn-bmalj.nitrocdn.com/uirOOtSrYrqqUksKHkiSCjZGZlPeXsmk/assets/static/optimized/rev-0404f4f/images/dead-sea-jordan-dave-mud.jpg',
+              
             ],
           ));
     } catch (EX) {
@@ -106,7 +105,7 @@ Set like an oasisi in the dramatic terrain, the location is easily accessible an
 }
 
 Detailes setDetailes(
-  Map<String, double> price,
+  List<Map<String, double>> price,
   Map<String, String> workhours, {
   required String category,
   required String id,

@@ -16,19 +16,20 @@ class UserServices {
       var res = await restApi.get('user/$url.json');
       print('===========' + "${res.length}");
       Map<String, dynamic> myMap = Map<String, dynamic>.from(res);
-      print("myMap  :" + "${myMap}");
-      var x = Users.fromJson(myMap);
-      print("x = $x");
+      print("myMap  :" + "$myMap");
+      print('objecta');
+      print("x == ${Users.fromJson(myMap)}");
       // for (var item in myMap.keys) {
       //   detailsList.add(Users.fromJson(myMap[item]));
       // }
-      return x;
+      return Users.fromJson(myMap);
     } catch (ex) {
-      print('erorr');
+      print('111');
       print(ex.toString());
     }
   }
-Future getnameData(String url) async {
+
+  Future getnameData(String url) async {
     try {
       print('aaabbbbccccddddeeeeffffggggg');
       var res = await restApi.get('user/$url.json');
@@ -46,8 +47,6 @@ Future getnameData(String url) async {
       print(ex.toString());
     }
   }
-
-  
 
   var resData;
   Future<AuthData?> singUpuser(String email, String password) async {
@@ -69,7 +68,6 @@ Future getnameData(String url) async {
       //  appApi.post('users.json',setuserSignUp(number: number, name: name, email: email, password: password, favirateList: favirateList, history: history) );
     } catch (e) {
       throw throw "${resData['error']['message']}";
-      
     }
   }
 
@@ -102,8 +100,8 @@ Future getnameData(String url) async {
       required String name,
       required String email,
       required String password,
-      required  List< String> favirateList,
-     required List <String> history}) async {
+      required List<String> favirateList,
+      required List<String> history}) async {
     try {
       restApi.pul(
           'user/$url.json',
@@ -120,7 +118,7 @@ Future getnameData(String url) async {
     }
   }
 
-  Future addToHistory({
+  Future addToFavirate({
     required String url,
     required Map<String, String> history,
   }) async {
@@ -133,7 +131,7 @@ Future getnameData(String url) async {
     }
   }
 
-  Future delateHistory({
+  Future delateFavirate({
     required String url,
     required String name,
   }) async {
@@ -154,6 +152,9 @@ Future getnameData(String url) async {
       List<String> detailsList = [];
       print("++++++++++++");
       var res = await restApi.get('user/$url/favirateList.json');
+      if (res == null) {
+        return [''];
+      }
       Map<String, dynamic> myMap = Map<String, dynamic>.from(res);
       myMap.forEach(
         (key, value) {
@@ -173,7 +174,7 @@ Users setuser(
     required String name,
     required String email,
     required String password,
-    required   List< String> favirateList,
+    required List<String> favirateList,
     required List<String> history}) {
   return Users(
       number: number,

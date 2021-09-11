@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
@@ -17,14 +18,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
+     super.initState();
     Timer(Duration(seconds: 2), () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-     var user = prefs.getString("userid");
+      var user = prefs.getString("userid");
       var email = prefs.getString("Email");
       var pass = prefs.getString("Pass");
-     
+
       var start = prefs.getBool("Start");
       if (email == null && pass == null) {
         start == true
@@ -33,7 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
             : Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => OnBoardingScreen()));
       } else {
-         
         Navigator.of(context).pushNamed(BottonBar.namedRoute);
       }
     });

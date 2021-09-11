@@ -8,7 +8,7 @@ class Detailes {
   final String id;
   final String name;
   final String mainImagUrl;
-  Map<String, double>? price;
+  List<Map<String, double>>? price;
   final String location;
   final double latitude;
   final double longitude;

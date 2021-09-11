@@ -9,9 +9,11 @@ part of 'details.dart';
 Detailes _$DetailesFromJson(Map<String, dynamic> json) {
   return Detailes(
     json['category'] as String,
-    (json['price'] as Map<String, dynamic>?)?.map(
-      (k, e) => MapEntry(k, (e as num).toDouble()),
-    ),
+    (json['price'] as List<dynamic>?)
+        ?.map((e) => (e as Map<String, dynamic>).map(
+              (k, e) => MapEntry(k, (e as num).toDouble()),
+            ))
+        .toList(),
     (json['workhours'] as Map<String, dynamic>?)?.map(
       (k, e) => MapEntry(k, e as String),
     ),

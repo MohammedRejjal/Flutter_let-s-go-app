@@ -36,11 +36,10 @@ class _SubSubCategoriesState extends State<SubSubCategories> {
                   childAspectRatio: .76),
               itemBuilder: (context, index) {
                 return BuildCard(
-                 
                   index: index,
                   image: watcher
                       .where((element) => element.id == widget.name)
-                      .first
+                      .elementAt(index)
                       .mainImagUrl,
                   textName: watcher
                       .where((element) => element.id == widget.name)
@@ -50,12 +49,18 @@ class _SubSubCategoriesState extends State<SubSubCategories> {
                       .where((element) => element.id == widget.name)
                       .elementAt(index)
                       .infoDetails,
-                      distance:distance(
-                  context,
-                   context.read<DetailsProvidder>().detailesData[index].latitude,
-                   context.read<DetailsProvidder>().detailesData[index].longitude,
-                  myloclc["latitude"]!,
-                myloclc["longitude"]!), 
+                  distance: distance(
+                      context,
+                      context
+                          .read<DetailsProvidder>()
+                          .detailesData[index]
+                          .latitude,
+                      context
+                          .read<DetailsProvidder>()
+                          .detailesData[index]
+                          .longitude,
+                      myloclc["latitude"]!,
+                      myloclc["longitude"]!),
                 );
 
                 // return

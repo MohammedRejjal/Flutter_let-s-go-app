@@ -252,8 +252,8 @@ class SignUpScreen extends StatelessWidget {
                                   name: nameController.text,
                                   email: emailController.text,
                                   password: passController.text,
-                                  favirateList: [""],
-                                  history: [""]);
+                                  favirateList: [],
+                                  history: []);
 
                               Navigator.push(
                                 context,

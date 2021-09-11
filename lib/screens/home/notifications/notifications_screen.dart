@@ -17,34 +17,35 @@ List<String> offers = [ 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ
 class _notificationsState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("notifications"),),
-      body: ListView.builder(
-        itemCount: offers.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: getScreenHeight()/3,
-                  width: double.infinity,
-                  child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            image: DecorationImage(
-                                image: NetworkImage(offers[index]),
-                                fit: BoxFit.fill)),
-                      )),
-                ),
-              ],
-            ),
-            onTap: () {},
-          );
-        },
+    return SafeArea(
+      child: Scaffold(
+         body: ListView.builder(
+          itemCount: offers.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: getScreenHeight()/3,
+                    width: double.infinity,
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              image: DecorationImage(
+                                  image: NetworkImage(offers[index]),
+                                  fit: BoxFit.fill)),
+                        )),
+                  ),
+                ],
+              ),
+              onTap: () {},
+            );
+          },
+        ),
       ),
     );
   }

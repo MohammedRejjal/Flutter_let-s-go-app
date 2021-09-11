@@ -1,6 +1,8 @@
+import 'package:ecommerce_final_project/main.dart';
 import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/screens/home/details/details_screen.dart';
+import 'package:ecommerce_final_project/screens/home/details/appBar/booking/booking_bar.dart';
 import 'package:ecommerce_final_project/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -31,7 +33,7 @@ class _BuildCardState extends State<BuildCard> {
       return GestureDetector(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-            return DetailsScreen(
+            return BookingBar(watcher:
                 watcher.where((element) => element.name == widget.textName));
           }));
           print(watcher.length);
@@ -102,17 +104,17 @@ class _BuildCardState extends State<BuildCard> {
                         IconButton(
                             onPressed: () {
                               if (favorite == false) {
-                                context.read<Userprovider>().addHistoty(
+                                context.read<Userprovider>().addFavirate(
                                     url: context
                                         .read<Userprovider>()
                                         .user!
                                         .userId,
-                                    history: {
+                                    favirate: {
                                       "${widget.textName}": "${widget.textName}"
                                     });
                               }
                               if (favorite == true) {
-                                context.read<Userprovider>().deletehistory(
+                                context.read<Userprovider>().deleteFavirate(
                                     url: context
                                         .read<Userprovider>()
                                         .user!
