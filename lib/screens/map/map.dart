@@ -59,17 +59,25 @@ class MapSampleState extends State<MapScreen> {
           ),
         ],
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () {
-              gotomap(widget.watcher.first.latitude,
-                  widget.watcher.first.longitude);
-            },
-            child: Icon(Icons.gps_fixed),
-          ),
-        ],
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Row(mainAxisAlignment: MainAxisAlignment. spaceBetween,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+               children: [
+                FloatingActionButton.extended(label:  Text("Get daraction"),
+                icon: Icon(Icons.gps_fixed),    
+                  onPressed: () {
+                    gotomap(widget.watcher.first.latitude,
+                        widget.watcher.first.longitude);
+                  }, 
+                
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

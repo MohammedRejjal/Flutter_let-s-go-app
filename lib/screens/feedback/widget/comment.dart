@@ -22,9 +22,10 @@ class _CommentState extends State<Comment> {
     // context.read<DetailsProvidder>().getFeedback('${widget.watcher!.first.name}/feedback.json');
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
+     var watcher = context.watch<Userprovider>();
+
     return Column(
       children: [
         Container(
@@ -61,8 +62,9 @@ class _CommentState extends State<Comment> {
           child: ListView.builder(
               itemCount: context.watch<DetailsProvidder>().feedback.length,
               itemBuilder: (BuildContext context, int index) {
-                print(
-                    "objectllasd ${context.watch<DetailsProvidder>().feedback.length}");
+              context.watch<Userprovider>().getname(url:  context
+                                            .watch<DetailsProvidder>()
+                                            .feedback.keys.elementAt(index));
                 return context.watch<DetailsProvidder>().feedback[index] != 0
                     ? Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -86,10 +88,12 @@ class _CommentState extends State<Comment> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       children: [
+                                        
+
                                         // Text(
                                         // '${context.watch<DetailsProvidder>().feedback[index] != 0 ? context.watch<DetailsProvidder>().feedback[index] : ""}'),
                                         Text(
-                                            "${context.watch<DetailsProvidder>().feedback.keys.elementAt(index)}"),
+                                            "${context.read<Userprovider>().name}",style:TextStyle(fontSize: 10),),
 
                                         Spacer(),
                                         Star(context
@@ -123,7 +127,8 @@ class _CommentState extends State<Comment> {
     );
   }
 }
-
+ 
+ 
 Star(int number) {
   switch (number) {
     case 1:

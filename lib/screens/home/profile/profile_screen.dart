@@ -15,11 +15,12 @@ class _AccountState extends State<Account> {
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
-          
-                  context.read<Userprovider>().getUser(context.read<Userprovider>().user!.userId);
+              var watcher = context.watch<Userprovider>();
+
 
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(title: Text('Profile'),),
         body: Container(
           padding: EdgeInsets.only(left: 16, top: 25, right: 16),
           child: GestureDetector(
@@ -83,10 +84,9 @@ class _AccountState extends State<Account> {
                 SizedBox(
                   height: 35,
                 ),
-                buildTextField("Full Name", "Mohammed", false),
-                buildTextField("E-mail", "rijjal1999@gmail.com", false),
-                buildTextField("Password","**********", true),
-                buildTextField("Booking", "Booking", false),
+                buildTextField("Full Name", "${watcher.userData!.name}", false),
+                buildTextField("E-mail", "${watcher.userData!.email}", false),
+                 buildTextField("Booking", "Booking", false),
                 SizedBox(
                   height: 35,
                 ),
@@ -103,19 +103,7 @@ class _AccountState extends State<Account> {
     return  Padding (
       padding: const EdgeInsets.only(bottom: 35.0),
       child: TextField(
-        obscureText: isPasswordTextField ? showPassword : false,
-        decoration: InputDecoration(
-            suffixIcon: isPasswordTextField
-                ? IconButton(
-                    onPressed: () {
-                      showPassword = !showPassword;
-                    },
-                    icon: Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey,
-                    ),
-                  )
-                : null,
+         decoration: InputDecoration(
             contentPadding: EdgeInsets.only(bottom: 3),
             labelText: labelText,
             floatingLabelBehavior: FloatingLabelBehavior.always,

@@ -48,6 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
       context.read<DestinationsProvider>().getAllDestination();
       context.read<DetailsProvidder>().getAllDetail();
       context.read<MainCategoryProvider>().getAllCategory();
+context.read<Userprovider>().getUser(context.read<Userprovider>().user!.userId);
+
       locationChange();
       x = true;
     }
@@ -66,7 +68,11 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     getDot();
-    return SafeArea(
+
+    return 
+    
+    
+    SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(

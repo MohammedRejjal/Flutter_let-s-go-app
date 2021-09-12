@@ -17,8 +17,7 @@ class UserServices {
       print('===========' + "${res.length}");
       Map<String, dynamic> myMap = Map<String, dynamic>.from(res);
       print("myMap  :" + "$myMap");
-      print('objecta');
-      print("x == ${Users.fromJson(myMap)}");
+       print("x == ${Users.fromJson(myMap)}");
       // for (var item in myMap.keys) {
       //   detailsList.add(Users.fromJson(myMap[item]));
       // }
@@ -35,13 +34,13 @@ class UserServices {
       var res = await restApi.get('user/$url.json');
       print('===========' + "${res.length}");
       Map<String, dynamic> myMap = Map<String, dynamic>.from(res);
-      print("myMap  :" + "${myMap}");
+      print("myMap  :" + "$myMap");
       var x = Users.fromJson(myMap);
       print("x = $x");
       // for (var item in myMap.keys) {
       //   detailsList.add(Users.fromJson(myMap[item]));
       // }
-      return x.name;
+      return myMap;
     } catch (ex) {
       print('erorr');
       print(ex.toString());
@@ -120,11 +119,11 @@ class UserServices {
 
   Future addToFavirate({
     required String url,
-    required Map<String, String> history,
+    required String favirate,
   }) async {
     try {
       restApi.patch('user/$url/favirateList.json',
-          {history.keys.first: history.values.first});
+          {favirate: favirate});
       return url;
     } catch (EX) {
       throw EX;
@@ -163,6 +162,21 @@ class UserServices {
       );
 
       return detailsList;
+    } catch (ex) {
+      throw Exception(ex);
+    }
+  }
+
+    Future getname({
+    required String url,
+  }) async {
+    try {
+      
+      print("++++++++++++");
+      var res = await restApi.get('user/$url/name.json');
+                 print("++++++++++++res $res");
+
+      return res;
     } catch (ex) {
       throw Exception(ex);
     }

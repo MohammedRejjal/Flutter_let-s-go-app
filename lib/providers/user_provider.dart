@@ -7,8 +7,8 @@ class Userprovider with ChangeNotifier {
   UserServices userservices = UserServices();
   Users? userData;
   AuthData? user;
-
-  bool isLoading = false;
+  Map<dynamic, dynamic> ?name;
+  bool isLoading = true;
 
   bool isSigningIn = true;
   List<String> favirateData = [];
@@ -31,20 +31,20 @@ class Userprovider with ChangeNotifier {
       userData = await userservices.getData(url);
     } catch (e) {
       print("error1");
-    }finally{    notifyListeners();
-}
+    } finally {
+      notifyListeners();
+    }
   }
 
-       gettheUser(String url)   {
+  gettheUser(String url) {
     try {
-     return   userservices.getnameData(url);
+      return userservices.getnameData(url);
     } catch (e) {
       print("error2");
-    }finally{    notifyListeners();
-}
+    } finally {
+      notifyListeners();
+    }
   }
-
- 
 
   Future setUser(
       {var url,
@@ -52,21 +52,21 @@ class Userprovider with ChangeNotifier {
       required String name,
       required String email,
       required String password,
-     required List< String> favirateList,
-     required List <String> history}) async {
+      required List<String> favirateList,
+      required List<String> history}) async {
     await userservices.setDataSS(
         url: url,
         number: number,
         name: name,
         email: email,
         password: password,
-        favirateList: [ ],
-        history: [ ]);
+        favirateList: [],
+        history: []);
     notifyListeners();
   }
 
   Future addFavirate({required url, required favirate}) async {
-    await userservices.addToFavirate(url: url, history: favirate);
+    await userservices.addToFavirate(url: url, favirate: favirate);
     notifyListeners();
   }
 
@@ -78,8 +78,21 @@ class Userprovider with ChangeNotifier {
   Future getFavirateData({
     required url,
   }) async {
+    isLoading = true;
     print("----------------------");
     favirateData = await userservices.getfaviret(url: url);
+    isLoading = false;
+
+    notifyListeners();
+  }
+
+  Future getname({
+    required url,
+  }) async {
+    isLoading = true;
+    print("----------------------");
+    name = await userservices.getname(url: url);
+    isLoading = false;
 
     notifyListeners();
   }

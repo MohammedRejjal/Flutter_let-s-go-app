@@ -8,7 +8,7 @@ class Users {
   int number;
   String name;
   String email;
- List< String> ? favirateList=[];
+ List<String> ? favirateList=[];
   String password;
   List<String>? history=[];
 

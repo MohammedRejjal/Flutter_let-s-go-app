@@ -109,9 +109,9 @@ class _BuildCardState extends State<BuildCard> {
                                         .read<Userprovider>()
                                         .user!
                                         .userId,
-                                    favirate: {
-                                      "${widget.textName}": "${widget.textName}"
-                                    });
+                                    favirate: 
+                                      "${widget.textName}"
+                                );
                               }
                               if (favorite == true) {
                                 context.read<Userprovider>().deleteFavirate(

@@ -39,10 +39,11 @@ class _FavirateScreenState extends State<FavirateScreen> {
 
     var watcher1 = context.watch<Userprovider>();
     print(watcher1.favirateData);
-    return SafeArea(
+    return  SafeArea(
       child: Scaffold(
-        body: watcher1.favirateData[0] != ''
-            ? GridView.builder(
+        body:watcher1.isLoading?Center(child: CircularProgressIndicator()):
+        watcher1.favirateData[0] != ''?
+           GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 1,
@@ -138,7 +139,7 @@ class _FavirateScreenState extends State<FavirateScreen> {
                                                           .userId,
                                                       name:
                                                           "${context.read<DetailsProvidder>().detailesData.where((element) => element.name == context.read<Userprovider>().favirateData[index]).first.name}");
-                                              setState(() {});
+                                              
                                             },
                                             icon: Icon(Icons.delete)),
                                         Spacer(),
