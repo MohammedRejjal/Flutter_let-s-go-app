@@ -10,7 +10,12 @@ import 'package:provider/provider.dart';
 
 class BuildCard extends StatefulWidget {
   const BuildCard(
-      {Key? key, this.image, this.textDetails, this.textName, this.index , this.distance})
+      {Key? key,
+      this.image,
+      this.textDetails,
+      this.textName,
+      this.index,
+      this.distance})
       : super(key: key);
   final image;
   final index;
@@ -26,15 +31,15 @@ class _BuildCardState extends State<BuildCard> {
 
   @override
   Widget build(BuildContext context) {
- 
     var watcher = context.watch<DetailsProvidder>().detailesData;
 
     {
       return GestureDetector(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-            return BookingBar(watcher:
-                watcher.where((element) => element.name == widget.textName));
+            return BookingBar(
+                watcher: watcher
+                    .where((element) => element.name == widget.textName));
           }));
           print(watcher.length);
         },
@@ -109,9 +114,7 @@ class _BuildCardState extends State<BuildCard> {
                                         .read<Userprovider>()
                                         .user!
                                         .userId,
-                                    favirate: 
-                                      "${widget.textName}"
-                                );
+                                    favirate: "${widget.textName}");
                               }
                               if (favorite == true) {
                                 context.read<Userprovider>().deleteFavirate(
@@ -130,14 +133,15 @@ class _BuildCardState extends State<BuildCard> {
                               favorite ? Icons.favorite : Icons.favorite_border,
                             )),
                         Spacer(),
- Text(
-                            '${widget.distance} Km ',
-                            style: TextStyle(
-                                fontSize: getScreenWidth() / 48,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blueGrey),
-                          ),
-
+                        double.parse("${widget.distance}") > 1000
+                            ? CircularProgressIndicator()
+                            : Text(
+                                '${widget.distance} Km ',
+                                style: TextStyle(
+                                    fontSize: getScreenWidth() / 48,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blueGrey),
+                              ),
                       ],
                     ),
                   ),

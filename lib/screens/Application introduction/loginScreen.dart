@@ -1,9 +1,7 @@
 import 'package:ecommerce_final_project/constants.dart';
-import 'package:ecommerce_final_project/providers/auth_provider.dart';
-import 'package:ecommerce_final_project/providers/user_provider.dart';
+ import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/SignUp.dart';
-import 'package:ecommerce_final_project/screens/home/home_screen.dart';
-import 'package:ecommerce_final_project/screens/widgets/bottom_bar.dart';
+ import 'package:ecommerce_final_project/screens/widgets/bottom_bar.dart';
 import 'package:ecommerce_final_project/screens/widgets/show_dalog.dart';
 
 import 'package:flutter/material.dart';

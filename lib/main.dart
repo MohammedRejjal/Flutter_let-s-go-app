@@ -1,6 +1,5 @@
 import 'package:ecommerce_final_project/L10n/I10n.dart';
-import 'package:ecommerce_final_project/providers/auth_provider.dart';
-import 'package:ecommerce_final_project/providers/category_provider.dart';
+ import 'package:ecommerce_final_project/providers/category_provider.dart';
 import 'package:ecommerce_final_project/providers/destinations_provider.dart';
 import 'package:ecommerce_final_project/providers/details_providder.dart';
 import 'package:ecommerce_final_project/providers/general_provider.dart';
@@ -9,13 +8,9 @@ import 'package:ecommerce_final_project/providers/slider_images_provider.dart';
 import 'package:ecommerce_final_project/providers/sub_category_provider.dart';
 import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/routes.dart';
-import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
-import 'package:ecommerce_final_project/screens/home/details/appBar/booking/booking_screen.dart';
-import 'package:ecommerce_final_project/screens/home/details/details_screen.dart';
-import 'package:ecommerce_final_project/screens/home/home_screen.dart';
+ 
 import 'package:ecommerce_final_project/screens/splash_screen/Splashscreen.dart';
-import 'package:ecommerce_final_project/screens/home/details/appBar/booking/booking_bar.dart';
-
+ 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

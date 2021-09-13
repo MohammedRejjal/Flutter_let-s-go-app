@@ -5,15 +5,15 @@ import 'package:flutter/widgets.dart';
 class MainCategoryProvider with ChangeNotifier {
   MainCategoryServices mainCategoryServices = MainCategoryServices();
   List categoryData = [];
-  bool stuts = true;
+  bool isloding = true;
 
   Future getAllCategory() async {
-    stuts = true;
+    isloding = true;
     categoryData = await mainCategoryServices.getData();
-    // ignore: unnecessary_null_comparison
-    if (categoryData != null) {
-      stuts = false;
-    }
+          isloding = false;
+              print("getAllCategory$isloding");
+
+
     notifyListeners();
   }
 }

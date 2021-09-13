@@ -19,6 +19,7 @@ class _notificationsState extends State<NotificationsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+           appBar: AppBar( backgroundColor: Colors.blueGrey[100],),
          body: ListView.builder(
           itemCount: offers.length,
           itemBuilder: (BuildContext context, int index) {

@@ -56,7 +56,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       
           length: 4,
           child: Scaffold(
-            
+            appBar: AppBar(elevation: 0,backgroundColor:Colors.transparent ,),
              body: NestedScrollView(
               floatHeaderSlivers: true,
               headerSliverBuilder:
@@ -72,7 +72,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             child: SafeArea(
                               child: Column(
                                 children: [
-                                  AppBar( title: Text("${widget.watcher.first.name}"), ),
+                                  AppBar( title: Text("${widget.watcher.first.name}" ,), ),
                                   Stack(
                                     children: [
                                       Container(

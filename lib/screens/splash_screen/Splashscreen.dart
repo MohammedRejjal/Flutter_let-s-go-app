@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:ecommerce_final_project/providers/destinations_provider.dart';
 import 'package:ecommerce_final_project/providers/details_providder.dart';
+import 'package:ecommerce_final_project/providers/main_category_provider.dart';
 import 'package:ecommerce_final_project/providers/user_provider.dart';
 import 'package:ecommerce_final_project/screens/Application%20introduction/loginScreen.dart';
 import 'package:ecommerce_final_project/screens/home/home_screen.dart';
@@ -36,6 +38,11 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.of(context).pushNamed(BottonBar.namedRoute);
       }
     });
+
+
+     context.read<DestinationsProvider>().getAllDestination();
+      context.read<DetailsProvidder>().getAllDetail();
+      context.read<MainCategoryProvider>().getAllCategory();
   }
 
   @override

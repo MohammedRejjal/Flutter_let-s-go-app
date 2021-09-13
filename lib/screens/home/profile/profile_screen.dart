@@ -20,8 +20,8 @@ class _AccountState extends State<Account> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text('Profile'),),
-        body: Container(
+           appBar: AppBar(title: Text('Profile' ,style: TextStyle(color: Colors.black),), backgroundColor: Colors.blueGrey[100],),
+         body: Container(
           padding: EdgeInsets.only(left: 16, top: 25, right: 16),
           child: GestureDetector(
             onTap: () {

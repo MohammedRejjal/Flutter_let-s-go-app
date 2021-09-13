@@ -82,7 +82,9 @@ class Stars extends StatelessWidget {
                   .addFeedback(url: watcher!.first.name, feedback: {
                 '${context.read<Userprovider>().user!.userId}': {
                   'feedback': rating.comment,
-                  'rating': rating.rating
+                  'rating': rating.rating,
+                  'name':context.read<Userprovider>().userData!.name
+                  
                 }
               });
 

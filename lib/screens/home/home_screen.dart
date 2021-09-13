@@ -45,10 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
       context
           .read<Userprovider>()
           .getUser(context.read<Userprovider>().user!.userId);
-      context.read<DestinationsProvider>().getAllDestination();
-      context.read<DetailsProvidder>().getAllDetail();
-      context.read<MainCategoryProvider>().getAllCategory();
-context.read<Userprovider>().getUser(context.read<Userprovider>().user!.userId);
+     
+      
 
       locationChange();
       x = true;
@@ -69,166 +67,167 @@ context.read<Userprovider>().getUser(context.read<Userprovider>().user!.userId);
 
     getDot();
 
-    return 
-    
-    
-    SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                child: Stack(
+    return  SafeArea(
+            child: Scaffold(
+              appBar: AppBar( backgroundColor: Colors.blueGrey[100],),
+              body: SingleChildScrollView(
+                child: Column(
                   children: [
                     Container(
-                      decoration: new BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20)),
-                        image: new DecorationImage(
-                          image: new AssetImage('assets/bluegreen.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height / 3,
-                    ),
-
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: 25,
-                        ),
-                        SearchTextField(onWhiteBackGround: false),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        CarouselSlider(
-                          carouselController: buttonCarouselController,
-                          options: CarouselOptions(
-                            onPageChanged: (index, reason) {
-                              setState(() {
-                                pageIndex = index;
-                              });
-                            },
-                            enlargeCenterPage: true,
-                            enableInfiniteScroll: false,
-                            autoPlay: true,
-                          ),
-                          items: imageList.map((e) {
-                            return GestureDetector(
-                              onTap: () {},
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Stack(
-                                  fit: StackFit.expand,
-                                  children: <Widget>[
-                                    Image.asset(
-                                      e,
-                                      fit: BoxFit.cover,
-                                    )
-                                  ],
-                                ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            decoration: new BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(20),
+                                  bottomLeft: Radius.circular(20)),
+                              image: new DecorationImage(
+                                image: new AssetImage('assets/bluegreen.jpg'),
+                                fit: BoxFit.cover,
                               ),
-                            );
-                          }).toList(),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [...listOfDot],
-                        ),
-                        Divider(
-                          color: Colors.black54,
-                        ),
-                        Center(
-                            child: Text(
-                          'Main Categories',
-                          style: TextStyle(fontSize: 18, color: Colors.black45),
-                        )),
-                        CategoriesCard(),
-                        Divider(
-                          color: Colors.black54,
-                        ),
-                        Center(
-                            child: Text(
-                          'See & Do',
-                          style: TextStyle(fontSize: 18, color: Colors.black45),
-                        )),
-                        LatestExpereans(
-                            genaratic: '',
-                            axis: true,
-                            count: context
-                                .read<DetailsProvidder>()
-                                .detailesData
-                                .length),
-                        Divider(
-                          color: Colors.black54,
-                        ),
-                        Center(
-                            child: Text(
-                          'Destinations',
-                          style: TextStyle(fontSize: 18, color: Colors.black45),
-                        )),
-                        Destinations(),
-                        Divider(
-                          color: Colors.black54,
-                        ),
-                        SizedBox(
-                          height: 40,
-                        )
-                      ],
+                            ),
+                            width: double.infinity,
+                            height: MediaQuery.of(context).size.height / 3,
+                          ),
+              
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 25,
+                              ),
+                              SearchTextField(onWhiteBackGround: false),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              CarouselSlider(
+                                carouselController: buttonCarouselController,
+                                options: CarouselOptions(
+                                  onPageChanged: (index, reason) {
+                                    setState(() {
+                                      pageIndex = index;
+                                    });
+                                  },
+                                  enlargeCenterPage: true,
+                                  enableInfiniteScroll: false,
+                                  autoPlay: true,
+                                ),
+                                items: imageList.map((e) {
+                                  return GestureDetector(
+                                    onTap: () {},
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Stack(
+                                        fit: StackFit.expand,
+                                        children: <Widget>[
+                                          Image.asset(
+                                            e,
+                                            fit: BoxFit.cover,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [...listOfDot],
+                              ),
+                              Divider(
+                                color: Colors.black54,
+                              ),
+                              Center(
+                                  child: Text(
+                                'Main Categories',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black45),
+                              )),
+                              CategoriesCard(),
+                              Divider(
+                                color: Colors.black54,
+                              ),
+                              Center(
+                                  child: Text(
+                                'See & Do',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black45),
+                              )),
+                              LatestExpereans(
+                                  genaratic: '',
+                                  axis: true,
+                                  count: context
+                                      .read<DetailsProvidder>()
+                                      .detailesData
+                                      .length),
+                              Divider(
+                                color: Colors.black54,
+                              ),
+                              Center(
+                                  child: Text(
+                                'Destinations',
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black45),
+                              )),
+                              Destinations(),
+                              Divider(
+                                color: Colors.black54,
+                              ),
+                              SizedBox(
+                                height: 40,
+                              )
+                            ],
+                          ),
+              
+                          // PageView.builder(
+                          //   onPageChanged: (int y) {
+                          //     setState(() {
+                          //       pageIndex = y;
+                          //     });
+                          //   },
+                          //   controller: _pageController,
+                          //   itemCount: content.length,
+                          //   itemBuilder: (context, index) {
+                          //     return Container(
+                          //       height: MediaQuery.of(context).size.height,
+                          //       width: MediaQuery.of(context).size.width,
+                          //       child: Column(
+                          //         crossAxisAlignment: CrossAxisAlignment.center,
+                          //         children: [
+                          //           SizedBox(
+                          //             height: 100,
+                          //           ),
+                          //           Container(
+                          //             child: Column(
+                          //               children: [
+                          //                 ClipRRect(
+                          //                   borderRadius: BorderRadius.circular(15.0),
+                          //                   child: Image.asset(
+                          //                     "${content[pageIndex]}",
+                          //                     fit: BoxFit.fill,
+                          //                     height:
+                          //                         MediaQuery.of(context).size.height / (3),
+                          //                     width: double.infinity,
+                          //                   ),
+                          //                 )
+                          //               ],
+                          //             ),
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     );
+                          //   },
+                          // ),
+                        ],
+                      ),
                     ),
-
-                    // PageView.builder(
-                    //   onPageChanged: (int y) {
-                    //     setState(() {
-                    //       pageIndex = y;
-                    //     });
-                    //   },
-                    //   controller: _pageController,
-                    //   itemCount: content.length,
-                    //   itemBuilder: (context, index) {
-                    //     return Container(
-                    //       height: MediaQuery.of(context).size.height,
-                    //       width: MediaQuery.of(context).size.width,
-                    //       child: Column(
-                    //         crossAxisAlignment: CrossAxisAlignment.center,
-                    //         children: [
-                    //           SizedBox(
-                    //             height: 100,
-                    //           ),
-                    //           Container(
-                    //             child: Column(
-                    //               children: [
-                    //                 ClipRRect(
-                    //                   borderRadius: BorderRadius.circular(15.0),
-                    //                   child: Image.asset(
-                    //                     "${content[pageIndex]}",
-                    //                     fit: BoxFit.fill,
-                    //                     height:
-                    //                         MediaQuery.of(context).size.height / (3),
-                    //                     width: double.infinity,
-                    //                   ),
-                    //                 )
-                    //               ],
-                    //             ),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     );
-                    //   },
-                    // ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-    );
+            ),
+          );
   }
 }
 

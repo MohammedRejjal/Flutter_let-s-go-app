@@ -93,7 +93,11 @@ class _CommentState extends State<Comment> {
                                         // Text(
                                         // '${context.watch<DetailsProvidder>().feedback[index] != 0 ? context.watch<DetailsProvidder>().feedback[index] : ""}'),
                                         Text(
-                                            "${context.read<Userprovider>().name}",style:TextStyle(fontSize: 10),),
+                                            "${context
+                                            .watch<DetailsProvidder>()
+                                            .feedback
+                                            .values
+                                            .elementAt(index)['name']}",style:TextStyle(fontSize: 10),),
 
                                         Spacer(),
                                         Star(context

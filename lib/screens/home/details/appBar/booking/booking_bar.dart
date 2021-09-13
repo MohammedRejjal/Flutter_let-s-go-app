@@ -11,6 +11,7 @@ class BookingBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+    debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       home: DefaultBottomBarController(
         child: ExamplePage(watcher: watcher),
@@ -89,7 +90,7 @@ class ExamplePage extends StatelessWidget {
         expandedBackColor: Colors.white,
         expandedBody: BookingScreen()
       ),
-      body: DetailsScreen(watcher),
+      body: SafeArea(child: DetailsScreen(watcher)),
     );
   }
 }

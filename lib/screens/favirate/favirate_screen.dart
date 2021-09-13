@@ -41,6 +41,7 @@ class _FavirateScreenState extends State<FavirateScreen> {
     print(watcher1.favirateData);
     return  SafeArea(
       child: Scaffold(
+           appBar: AppBar( backgroundColor: Colors.blueGrey[100],),
         body:watcher1.isLoading?Center(child: CircularProgressIndicator()):
         watcher1.favirateData[0] != ''?
            GridView.builder(

@@ -5,10 +5,14 @@ import 'package:flutter/cupertino.dart';
 class DetailsProvidder with ChangeNotifier {
   DetailsServices detailsServices = DetailsServices();
   List<Detailes> detailesData = [];
-   Map<String, dynamic> feedback = {};
+  Map<String, dynamic> feedback = {};
+  bool isloding = true;
 
   Future getAllDetail() async {
+    isloding = true;
     detailesData = await detailsServices.getData();
+    isloding = false;
+    print("getAllDetail$isloding");
     notifyListeners();
   }
 
@@ -33,7 +37,7 @@ class DetailsProvidder with ChangeNotifier {
 
   Future getFeedback(String url) async {
     feedback = await detailsServices.getFeedback(url);
-    print( "feedback $feedback");
+    print("feedback $feedback");
     notifyListeners();
   }
 }
